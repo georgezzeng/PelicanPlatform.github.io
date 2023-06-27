@@ -1,95 +1,44 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+'use client'
+
+import Image from "next/image";
+import {BackgroundPage} from "@/components/Background";
+import {Box, Container, Grid} from '@mui/material';
+import hero from '../public/static/images/pelican-hero.png'
+import { Poppins } from 'next/font/google'
+import styles from "./page.module.css"
+
+import pelicanDiagram from "../public/static/images/pelican-diagram.png"
+
+const poppins = Poppins({
+    subsets: ['latin'],
+    style: ['normal'],
+    weight: ['400', '700']
+})
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+    <main>
+        <BackgroundPage image={hero}/>
+        <Container sx={{ paddingTop: "2rem"}}>
+            <Box sx={{backdropFilter: "blur(3px)", padding:"1rem;", borderRadius: "2rem;"}}>
+                <Grid  container spacing={2}>
+                    <Grid item xs={8} sx={{display: "flex", flexDirection: "column"}}>
+                        <Box sx={{marginTop: "auto", marginBottom: "auto"}}>
+                            <h3 style={{fontSize: "2rem"}}>Software Solutions for </h3>
+                            <h1 style={{fontSize: "4rem", marginTop: "-.7rem"}}>Distributing Data</h1>
+                            <h3 style={{fontSize: "1.5rem", fontWeight: "400"}}>Designed to be scalable, fault tolerant,<br/> and easy to deploy</h3>
+                        </Box>
+                    </Grid>
+                    <Grid item xs={4}>
+                        <Image style={{width: "100%", height:"auto"}} src={pelicanDiagram} alt={"Sky level diagram of Pelican"} width={600} quality={100}/>
+                    </Grid>
+                </Grid>
+            </Box>
+            <Box sx={{borderRadius: "1rem", marginTop: "2rem;", padding: "1rem", backgroundColor: "rgb(231, 235, 240)"}}>
+                <h1 style={{textAlign:"center"}}>Bringing Data Closer to Users</h1>
+                <p>Test</p>
+            </Box>
+        </Container>
     </main>
   )
 }
