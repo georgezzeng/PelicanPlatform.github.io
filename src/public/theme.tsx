@@ -1,6 +1,7 @@
 'use client'
 
 import {createTheme, ThemeProvider} from "@mui/material";
+import {FC} from "react";
 
 const theme = createTheme({
     typography: {
@@ -21,6 +22,10 @@ const theme = createTheme({
     },
 });
 
-export const ThemeProviderClient = ({ children }) => {
+interface ThemeProviderClientProps {
+    children: React.ReactNode
+}
+
+export const ThemeProviderClient: FC<ThemeProviderClientProps> = ({ children }) => {
     return <ThemeProvider theme={theme}>{children}</ThemeProvider>
 }
