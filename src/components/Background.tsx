@@ -16,6 +16,7 @@ export const BackgroundPage = ({image}: any) => {
                     sizes="100vw"
                     style={{
                         objectFit: 'cover',
+                        opacity: "50%"
                     }}
                 />
             </div>

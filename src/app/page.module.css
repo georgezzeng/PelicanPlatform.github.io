@@ -75,7 +75,7 @@
 .header::before {
   background: conic-gradient( from 180deg at 80% 80%, #16abff 0deg, #0885ff 55deg, #54d6ff 120deg, #0071ff 160deg, #0071ff 360deg );
   opacity: 20%;
-  transition: opacity 1s ease-out;
+  transition: opacity .5s ease-out;
   z-index: -1;
   filter: blur(20px);
   content: "";
@@ -95,7 +95,7 @@
   margin-left: -5%;
   margin-top: -1%;
   background-color: white;
-  transition: opacity 1s ease-out;
+  transition: opacity .5s ease-out;
   opacity: 98%
 }
 
