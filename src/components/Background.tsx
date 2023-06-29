@@ -1,5 +1,5 @@
 import styles from "@/app/page.module.css";
-import Image from "next/image";
+import ExportedImage from "next-image-export-optimizer";
 
 
 
@@ -7,11 +7,10 @@ export const BackgroundPage = ({image}: any) => {
     return (
         <div>
             <div className={styles.bgWrap}>
-                <Image
+                <ExportedImage
                     alt="Mountains"
                     src={image}
                     placeholder="blur"
-                    quality={100}
                     fill
                     sizes="100vw"
                     style={{

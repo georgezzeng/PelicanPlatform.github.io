@@ -1,6 +1,6 @@
 'use client'
 
-import Image from "next/image";
+import ExportedImage from "next-image-export-optimizer";
 import {BackgroundPage} from "@/components/Background";
 import {Box, Container, Grid, Typography} from '@mui/material';
 import hero from '../public/static/images/pelican-hero.png'
@@ -37,8 +37,8 @@ export default function Home() {
                             </Box>
                         </Grid>
                         <Grid item xs={7}>
-                            <Image style={{width: "100%", height: "auto"}} src={pelicanDiagram}
-                                   alt={"Sky level diagram of Pelican"} width={1000} quality={100}/>
+                            <ExportedImage style={{width: "100%", height: "auto"}} src={pelicanDiagram}
+                                   alt={"Sky level diagram of Pelican"} width={1000}/>
                         </Grid>
                     </Grid>
                 </Box>

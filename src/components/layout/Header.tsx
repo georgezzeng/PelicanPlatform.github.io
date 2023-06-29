@@ -1,10 +1,12 @@
 'use client'
 
-import Image from "next/image";
+import ExportedImage from "next-image-export-optimizer";
 import githubMark from "../../public/static/images/github-mark.png"
 import {useState, useEffect} from "react";
 import styles from "../../app/page.module.css"
 import {Poppins} from "next/font/google";
+
+import PelicanLogo from "../../public/static/images/PelicanPlatformLogo_Icon.png"
 
 const poppins = Poppins({
     subsets: ['latin'],
@@ -30,7 +32,7 @@ export const Header = () => {
             </div>
             <div>
                 <a href={"https://github.com/PelicanPlatform"}>
-                    <Image
+                    <ExportedImage
                         src={githubMark}
                         alt={"Github Mark"}
                         height={40}
