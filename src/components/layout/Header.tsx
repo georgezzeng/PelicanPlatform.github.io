@@ -7,12 +7,7 @@ import styles from "../../app/page.module.css"
 import {Poppins} from "next/font/google";
 
 import PelicanLogo from "../../public/static/images/PelicanPlatformLogo_Icon.png"
-
-const poppins = Poppins({
-    subsets: ['latin'],
-    style: ['normal'],
-    weight: ['400']
-})
+import {Typography} from "@mui/material";
 
 export const Header = () => {
 
@@ -26,16 +21,16 @@ export const Header = () => {
     }, [] )
 
     return (
-        <div className={`${styles.header} ${scrolledTop ? styles.headerScrolled : ""} ${poppins.className}`} style={{display: "flex", justifyContent:"space-between", padding:"1rem", position:"fixed", zIndex:"1", width: "100%", overflow: "hidden"}}>
+        <div className={`${styles.header} ${scrolledTop ? styles.headerScrolled : ""}`} style={{display: "flex", justifyContent:"space-between", padding:"1rem", position:"fixed", zIndex:"1", width: "100%", overflow: "hidden"}}>
             <div style={{display:"flex"}}>
-                <h2 style={{margin:"auto"}}>Pelican Platform</h2>
+                <Typography variant={"h5"} my={"auto"}>Pelican Platform</Typography>
             </div>
             <div>
                 <a href={"https://github.com/PelicanPlatform"}>
                     <ExportedImage
                         src={githubMark}
                         alt={"Github Mark"}
-                        height={40}
+                        height={32}
                     />
                 </a>
             </div>
