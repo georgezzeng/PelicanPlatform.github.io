@@ -24,8 +24,7 @@ export default function Home() {
 						<Grid item xs={12} md={10} lg={8}>
 							<Typography variant={"h2"} pb={2}>Branding</Typography>
 							<Typography pb={2} variant={"body1"}>
-								The following is a list of branding assets for the Pelican Platform. We suggest use of SVGs where possible, 
-								but have also provided PNGs for convenience.
+								The following is a list of branding assets for the Pelican Platform.
 							</Typography>
 							<Typography variant={"h3"} pt={3} pb={2}>Colors</Typography>
 							<Stack direction="row" spacing={1}>
