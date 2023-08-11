@@ -31,14 +31,14 @@ export default function Home() {
 								<Chip
 										icon={<ContentCopyIcon/>}
 										onClick={(e) => navigator.clipboard.writeText("#0885ff")}
-										label="Light: #0885ff"
-										sx={{backgroundColor: "primary.light"}}
+										label="Main: #0885FF"
+										sx={{backgroundColor: "primary.main"}}
 								/>
 								<Chip
 										icon={<ContentCopyIcon />}
 										onClick={(e) => navigator.clipboard.writeText("#CFE4FF")}
-										label="Primary: #CFE4FF"
-										color="primary"
+										label="Light: #CFE4FF"
+										sx={{backgroundColor: "primary.light"}}
 								/>
 							</Stack>
 							<Typography variant={"h3"} pt={3} pb={2}>Visuals</Typography>
