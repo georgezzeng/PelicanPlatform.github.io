@@ -1,10 +1,7 @@
 .main {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  padding: 6rem;
   min-height: 100vh;
+  padding-top: 2rem;
+  box-shadow: 0px 6px 7px #e2e2e2;
 }
 
 .description {

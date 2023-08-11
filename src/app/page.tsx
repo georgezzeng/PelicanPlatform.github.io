@@ -8,13 +8,13 @@ import {Poppins} from 'next/font/google'
 import ArrowRight from "@/components/svg/arrowright";
 import styles from "./page.module.css"
 
-import pelicanDiagram from "../public/static/images/pelican-concept-map.png"
+import pelicanDiagram from "../public/static/images/pelican-concept-map_Realistic.png"
 
 import Link from "next/link";
 
 export default function Home() {
     return (
-        <main>
+        <main className={styles.main}>
             <BackgroundPage image={hero}/>
             <Container maxWidth={"xl"}>
                 <Box sx={{paddingTop: "4rem", paddingBottom: "10rem"}}>

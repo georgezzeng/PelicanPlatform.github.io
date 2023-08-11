@@ -3,8 +3,10 @@
 import ExportedImage from "next-image-export-optimizer";
 import githubMark from "../../public/static/images/github-mark.png"
 import {useState, useEffect} from "react";
+import {Grid, Box, Container, Divider} from "@mui/material";
 import styles from "../../app/page.module.css"
 import {Poppins} from "next/font/google";
+import Link from "next/link";
 
 import PelicanLogo from "../../public/static/images/PelicanPlatformLogo_Icon.png"
 import {Typography} from "@mui/material";
@@ -22,9 +24,12 @@ export const Header = () => {
 
     return (
         <div className={`${styles.header} ${scrolledTop ? styles.headerScrolled : ""}`} style={{display: "flex", justifyContent:"space-between", padding:"1rem", position:"fixed", zIndex:"1", width: "100%", overflow: "hidden"}}>
-            <div style={{display:"flex"}}>
-                <Typography variant={"h5"} my={"auto"}>Pelican Platform</Typography>
-            </div>
+            <Link href={"/"}>
+              <Box style={{display:"flex"}}>
+                <ExportedImage src={PelicanLogo} alt={"Pelican Logo"} height={36}/>
+                <Typography variant={"h5"} pl={1} my={"auto"}>Pelican Platform</Typography>
+              </Box>
+            </Link>
             <div>
                 <a href={"https://github.com/PelicanPlatform"}>
                     <ExportedImage
