@@ -1,0 +1,73 @@
+{
+  "team": [
+    {
+      "name": "Brian Bockelman",
+      "title": "Principal Investigator",
+      "institution": "Morgridge Institute for Research",
+      "image": "/static/images/staff/brian_bockelman.jpg",
+      "leadership": true
+    },
+    {
+      "name": "Miron Livny",
+      "title": "Co-Principal Investigator",
+      "institution": "University of Wisconsin-Madison",
+      "image": "/static/images/staff/miron_livny.jpg",
+      "leadership": true
+    },
+    {
+      "name": "Frank Wuerthwein",
+      "title": "Co-Principal Investigator",
+      "institution": "University of California San Diego",
+      "image": "/static/images/staff/frank_wuerthwein.jpg",
+      "leadership": true
+    },
+    {
+      "name": "Tae Kidd",
+      "title": "Project Manager",
+      "institution": "Morgridge Institute for Research",
+      "image": "/static/images/staff/tae_kidd.jpg"
+    },
+    {
+      "name": "Justin Hiemstra",
+      "title": "Software Engineer",
+      "institution": "Morgridge Institute for Research",
+      "image": "/static/images/staff/justin_hiemstra.jpg"
+    },
+    {
+      "name": "Cannon Lock",
+      "title": "Web Developer",
+      "institution": "Morgridge Institute for Research",
+      "image": "/static/images/staff/cannon_lock.jpg"
+    },
+    {
+      "name": "Emma Turetsky",
+      "title": "Software Engineer",
+      "institution": "Morgridge Institute for Research",
+      "image": "/static/images/staff/emma_turetsky.jpg"
+    },
+    {
+      "name": "Joe Ruess",
+      "title": "Software Engineer",
+      "institution": "University of Wisconsin-Madison",
+      "image": "/static/images/staff/joe_ruess.jpg"
+    },
+    {
+      "name": "Alja Tadel",
+      "title": "Software Engineer",
+      "institution": "University of California San Diego",
+      "image": "/static/images/staff/alja_tadel.jpg"
+    },
+    {
+      "name": "Matevz Tadel",
+      "title": "Software Engineer",
+      "institution": "University of California San Diego",
+      "image": "/static/images/staff/matevz_tadel.jpg"
+    },
+    {
+      "name": "Rich Wellner",
+      "title": "Software Engineer",
+      "institution": "San Diego Supercomputer Center",
+      "image": "/static/images/staff/rich_wellner.jpg"
+    }
+  ]
+}

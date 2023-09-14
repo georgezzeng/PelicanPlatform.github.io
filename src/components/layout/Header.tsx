@@ -13,32 +13,46 @@ import {Typography} from "@mui/material";
 
 export const Header = () => {
 
-    let [scrolledTop, setScrolledTop] = useState(true);
+	let [scrolledTop, setScrolledTop] = useState(true);
 
-    useEffect(() => {
-        setScrolledTop(window.scrollY < 50);
-        addEventListener("scroll", (event) => {
-            setScrolledTop(window.scrollY < 50);
-        });
-    }, [] )
+	useEffect(() => {
+		setScrolledTop(window.scrollY < 50);
+		addEventListener("scroll", (event) => {
+			setScrolledTop(window.scrollY < 50);
+		});
+	}, [])
 
-    return (
-        <div className={`${styles.header} ${scrolledTop ? styles.headerScrolled : ""}`} style={{display: "flex", justifyContent:"space-between", padding:"1rem", position:"fixed", zIndex:"1", width: "100%", overflow: "hidden"}}>
-            <Link href={"/"}>
-              <Box style={{display:"flex"}}>
-                <ExportedImage src={PelicanLogo} alt={"Pelican Logo"} height={36}/>
-                <Typography variant={"h5"} pl={1} my={"auto"}>Pelican Platform</Typography>
-              </Box>
-            </Link>
-            <div>
-                <a href={"https://github.com/PelicanPlatform"}>
-                    <ExportedImage
-                        src={githubMark}
-                        alt={"Github Mark"}
-                        height={32}
-                    />
-                </a>
-            </div>
-        </div>
-    )
+	return (
+		<div className={`${styles.header} ${scrolledTop ? styles.headerScrolled : ""}`} style={{
+			display: "flex",
+			justifyContent: "space-between",
+			padding: "1rem",
+			position: "fixed",
+			zIndex: "1",
+			width: "100%",
+			overflow: "hidden"
+		}}>
+			<Box display={"flex"}>
+				<Link href={"/"}>
+					<Box style={{display: "flex"}}>
+						<ExportedImage src={PelicanLogo} alt={"Pelican Logo"} height={36}/>
+						<Typography variant={"h5"} pl={1} my={"auto"}>Pelican Platform</Typography>
+					</Box>
+				</Link>
+				<Link href={"/team"} style={{display: "flex"}}>
+					<Typography my={"auto"} pl={2} lineHeight={1} variant={"h6"}>Team</Typography>
+				</Link>
+			</Box>
+
+			<div>
+				<a href={"https://github.com/PelicanPlatform"}>
+					<ExportedImage
+							src={githubMark}
+							alt={"Github Mark"}
+							height={32}
+					/>
+				</a>
+			</div>
+		</div>
+	)
 }

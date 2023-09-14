@@ -1,7 +1,9 @@
 import './globals.css'
 import {Header} from "@/components/layout/Header";
+import {Box} from "@mui/material";
 import {ThemeProviderClient} from "@/public/theme";
 import Footer from "@/components/layout/Footer";
+import styles from "./page.module.css"
 
 export const metadata = {
   title: 'Pelican Platform',
@@ -18,7 +20,7 @@ export default function RootLayout({
       <ThemeProviderClient>
         <body>
           <Header/>
-          <main style={{marginTop: "75px"}}>
+          <main className={styles.main}>
             {children}
           </main>
           <Footer/>

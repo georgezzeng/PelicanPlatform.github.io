@@ -1,6 +1,8 @@
 .main {
   min-height: 100vh;
-  padding-top: 2rem;
+  margin-top: 4rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
   box-shadow: 0px 6px 7px #e2e2e2;
 }
 
