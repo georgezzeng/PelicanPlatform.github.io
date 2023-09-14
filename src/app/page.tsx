@@ -14,7 +14,7 @@ import Link from "next/link";
 
 export default function Home() {
     return (
-        <main className={styles.main}>
+        <Box>
             <BackgroundPage image={hero}/>
             <Container maxWidth={"xl"}>
                 <Box sx={{paddingTop: "4rem", paddingBottom: "10rem"}}>
@@ -98,5 +98,5 @@ export default function Home() {
                     </Grid>
                 </Container>
             </Box>
-        </main>)
+        </Box>)
 }

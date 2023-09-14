@@ -1,19 +1,9 @@
-'use client'
+import {Box, Container, Grid} from '@mui/material';
 
-import ExportedImage from "next-image-export-optimizer";
-import {BackgroundPage} from "@/components/Background";
-import {Box, Container, Grid, Typography, Stack, Chip} from '@mui/material';
-import ContentCopyIcon from '@mui/icons-material/ContentCopy';
-import hero from '../public/static/images/pelican-hero.png'
-import {Poppins} from 'next/font/google'
-import ArrowRight from "@/components/svg/arrowright";
-import styles from "../page.module.css"
-import type { InferGetStaticPropsType, GetStaticProps } from 'next'
 
 import {team} from "./team.json"
 import {LeaderCard, StaffCard} from "./cards";
 
-import Link from "next/link";
 
 
 export default function Page() {
@@ -21,9 +11,8 @@ export default function Page() {
 	const leadership = team.filter((member) => member.leadership ?? false )
 	const staff = team.filter((member) => !member.leadership ?? false )
 
-	console.log(team)
 	return (
-			<Box>
+			<Box pt={6}>
 				<Container maxWidth={"xl"}>
 					<Grid container justifyContent={"center"}>
 						<Grid item xs={12} sm={6} lg={5}>

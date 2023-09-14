@@ -1,24 +1,18 @@
 'use client'
 
 import ExportedImage from "next-image-export-optimizer";
-import {BackgroundPage} from "@/components/Background";
 import {Box, Container, Grid, Typography, Stack, Chip} from '@mui/material';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
-import hero from '../public/static/images/pelican-hero.png'
-import {Poppins} from 'next/font/google'
-import ArrowRight from "@/components/svg/arrowright";
-import styles from "../page.module.css"
 
 import pelicanDiagram from "../../public/static/images/pelican-concept-map_Realistic.png"
 import pelicanIcon from "../../public/static/images/PelicanPlatformLogo_Icon.png"
 import pelicanLogo from "../../public/static/images/PelicanPlatformLogo_Full_Text.png"
 
-import Link from "next/link";
 
 
-export default function Home() {
+export default function Page() {
 	return (
-			<main className={styles.main}>
+			<Box pt={6}>
 				<Container maxWidth={"xl"}>
 					<Grid container justifyContent={"Center"}>
 						<Grid item xs={12} md={10} lg={8}>
@@ -60,6 +54,6 @@ export default function Home() {
 						</Grid>
 					</Grid>
 				</Container>
-			</main>
+			</Box>
 	)
 }
