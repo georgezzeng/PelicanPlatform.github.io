@@ -68,6 +68,24 @@
       "title": "SDx Director",
       "institution": "San Diego Supercomputer Center",
       "image": "/static/images/staff/rich_wellner.jpg"
+    },
+    {
+      "name": "Haoming Meng",
+      "title": "Research Software Engineer",
+      "institution": "Morgridge Institute for Research",
+      "image": "/static/images/staff/haoming_meng.jpg"
+    }
+    ,{
+      "name": "Sarah Matysiak",
+      "title": "Student Science Writer",
+      "institution": "Morgridge Institute for Research",
+      "image": "/static/images/staff/sarah_matysiak.jpg"
+    },
+    {
+      "name": "Lili Bicoy",
+      "title": "Student Science Writer",
+      "institution": "Morgridge Institute for Research",
+      "image": "/static/images/staff/lili_bicoy.jpg"
     }
   ]
 }
