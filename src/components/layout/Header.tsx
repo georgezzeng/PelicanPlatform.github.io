@@ -48,7 +48,7 @@ export const Header = () => {
 						<Typography variant={"h5"} pl={1} my={"auto"}>Pelican Platform</Typography>
 					</Box>
 				</Link>
-				<Link href={"/"} style={{display: "flex"}}
+				<Link href={"#"} style={{display: "flex"}}
 					id="about-button"
 					aria-controls={open ? 'about-menu' : undefined}
 					aria-haspopup="true"
@@ -65,8 +65,13 @@ export const Header = () => {
 					'aria-labelledby': 'about-button',
 					}}
 				>
-					<MenuItem onClick={handleClose}>Whats Pelican?</MenuItem>
-					<MenuItem onClick={handleClose}>Contact</MenuItem>
+					<Link href={"/about"}>
+						<MenuItem onClick={handleClose}>What&#39;s Pelican?</MenuItem>
+					</Link>
+					<Link href={"/contact"}>
+						<MenuItem onClick={handleClose}>Contact</MenuItem>
+					</Link>
+					
 				</Menu>
 				<Link href={"/team"} style={{display: "flex"}}>
 					<Typography my={"auto"} pl={2} lineHeight={1} variant={"h6"}>Team</Typography>
