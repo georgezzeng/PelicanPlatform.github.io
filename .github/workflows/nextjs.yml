@@ -76,7 +76,7 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Build with Next.js
         working-directory: ./src
-        run: ${{ steps.detect-package-manager.outputs.runner }} npm run export
+        run: yarn run export
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
