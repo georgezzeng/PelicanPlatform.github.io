@@ -15,7 +15,7 @@ interface CardProps {
 
 export const HeroCard = ({href, article} : CardProps) => {
 	return (
-			<Box>
+			<Box sx={{ display: { xs: 'none', md: 'block' } }}>
 				<Grid container>
 					<Grid item xs={6}>
 						<img style={{objectFit: "cover", width: "100%", height: "100%"}} src={article.image.path} alt={article.image.alt} />
