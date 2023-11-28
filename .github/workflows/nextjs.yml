@@ -78,7 +78,7 @@ jobs:
         working-directory: ./src
         run: |
           yarn run export
-          ls out
+          ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
