@@ -25,7 +25,7 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
 					<Grid container >
 						{articles.map(article =>
 							<Grid key={article.slug.join("-")} item xs={12} md={6} lg={4}>
-								<ArticleCard href={`/user-stories/${article.slug.join("/")}`} article={article}/>
+								<ArticleCard href={`/news/${article.slug.join("/")}`} article={article}/>
 							</Grid>
 						)}
 					</Grid>
