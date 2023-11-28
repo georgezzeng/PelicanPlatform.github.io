@@ -78,7 +78,7 @@ jobs:
         working-directory: ./src
         run: |
           yarn run export
-          ls ./src/out
+          ls out
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
