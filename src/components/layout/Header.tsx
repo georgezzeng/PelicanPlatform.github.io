@@ -25,7 +25,8 @@ export const Header = () => {
 	}, [])
 
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-	const open = Boolean(anchorEl);
+
+	console.log(anchorEl);
 	const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
 	  setAnchorEl(event.currentTarget);
 	};
@@ -50,17 +51,16 @@ export const Header = () => {
 					</Box>
 				</Link>
 				<Link href={"#"} style={{display: "flex"}}
-					id="about-button"
-					aria-controls={open ? 'about-menu' : undefined}
+					aria-controls={anchorEl?.id === "about-header" ? 'about-menu' : undefined}
 					aria-haspopup="true"
-					aria-expanded={open ? 'true' : undefined}
+					aria-expanded={anchorEl?.id === "about-header" ? 'true' : undefined}
 				>
-					<Typography my={"auto"} pl={2} lineHeight={1} variant={"h6"} onClick={handleClick}>About</Typography>
+					<Typography id="about-header" my={"auto"} pl={2} lineHeight={1} variant={"h6"} onClick={handleClick}>About</Typography>
 				</Link>
 				<Menu
 					id="about-menu"
 					anchorEl={anchorEl}
-					open={open}
+					open={anchorEl?.id === "about-header"}
 					onClose={handleClose}
 					MenuListProps={{
 					'aria-labelledby': 'about-button',
@@ -75,15 +75,15 @@ export const Header = () => {
 					
 				</Menu>
 				<Link href={"/team"} style={{display: "flex"}}>
-					<Typography my={"auto"} pl={2} lineHeight={1} variant={"h6"}>Team</Typography>
+					<Typography id="team-header" my={"auto"} pl={2} lineHeight={1} variant={"h6"}>Team</Typography>
 				</Link>
 				<Link href={"#"} style={{display: "flex"}}
-							id="about-button"
-							aria-controls={open ? 'about-menu' : undefined}
+							id="community-button"
+							aria-controls={anchorEl?.id === "community-header" ? 'community-menu' : undefined}
 							aria-haspopup="true"
-							aria-expanded={open ? 'true' : undefined}
+							aria-expanded={anchorEl?.id === "community-header" ? 'true' : undefined}
 				>
-					<Typography display={"flex"} my={"auto"} pl={2} lineHeight={1} variant={"h6"} onClick={handleClick}>
+					<Typography id="community-header" display={"flex"} my={"auto"} pl={2} lineHeight={1} variant={"h6"} onClick={handleClick}>
 						<Box display={"inline"} my={"auto"}>
 							Community
 						</Box>
@@ -93,7 +93,7 @@ export const Header = () => {
 				<Menu
 						id="community-menu"
 						anchorEl={anchorEl}
-						open={open}
+						open={anchorEl?.id === "community-header"}
 						onClose={handleClose}
 						MenuListProps={{
 							'aria-labelledby': 'community-button',
