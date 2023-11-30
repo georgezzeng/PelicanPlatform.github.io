@@ -38,6 +38,7 @@ let theme = createTheme({
 		},
 		body1: {
 			fontSize: "1.2rem",
+			paddingBottom: "1rem",
 		},
 		fontFamily: [
 			"Helvetica Neue",

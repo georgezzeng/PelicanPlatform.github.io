@@ -2,11 +2,13 @@
 
 import ExportedImage from "next-image-export-optimizer";
 import githubMark from "../../public/static/images/github-mark.png"
-import {useState, useEffect, useRef} from "react";
-import {Grid, Box, Container, Divider, Menu, MenuItem, Button, Popper, Grow, Paper, ClickAwayListener, MenuList} from "@mui/material";
+
+import React, {useState, useEffect, useRef} from "react";
+import {Grid, Box, Container, Divider, Menu, MenuItem, Button, Popper, Grow, Paper, ClickAwayListener, MenuList} from "@mui/material"
 import styles from "../../app/page.module.css"
 import {Poppins} from "next/font/google";
 import Link from "next/link";
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 import PelicanLogo from "../../public/static/images/PelicanPlatformLogo_Icon.png"
 import {Typography} from "@mui/material";
@@ -30,7 +32,6 @@ export const Header = () => {
 	const handleClose = () => {
 	  setAnchorEl(null);
 	};
-
 	return (
 		<div className={`${styles.header} ${scrolledTop ? styles.headerScrolled : ""}`} style={{
 			display: "flex",
@@ -76,8 +77,36 @@ export const Header = () => {
 				<Link href={"/team"} style={{display: "flex"}}>
 					<Typography my={"auto"} pl={2} lineHeight={1} variant={"h6"}>Team</Typography>
 				</Link>
+				<Link href={"#"} style={{display: "flex"}}
+							id="about-button"
+							aria-controls={open ? 'about-menu' : undefined}
+							aria-haspopup="true"
+							aria-expanded={open ? 'true' : undefined}
+				>
+					<Typography display={"flex"} my={"auto"} pl={2} lineHeight={1} variant={"h6"} onClick={handleClick}>
+						<Box display={"inline"} my={"auto"}>
+							Community
+						</Box>
+						<ArrowDropDownIcon />
+					</Typography>
+				</Link>
+				<Menu
+						id="community-menu"
+						anchorEl={anchorEl}
+						open={open}
+						onClose={handleClose}
+						MenuListProps={{
+							'aria-labelledby': 'community-button',
+						}}
+				>
+					<Link href={"/user-stories"}>
+						<MenuItem onClick={handleClose}>User Stories</MenuItem>
+					</Link>
+					<Link href={"/news"}>
+						<MenuItem onClick={handleClose}>News</MenuItem>
+					</Link>
+				</Menu>
 			</Box>
-
 			<div>
 				<a href={"https://github.com/PelicanPlatform"}>
 					<ExportedImage
