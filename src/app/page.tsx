@@ -12,7 +12,33 @@ import pelicanDiagram from "../public/static/images/pelican-concept-map_Realisti
 
 import Link from "next/link";
 
+import {HeroCard, ArticleCard} from "@/components/Article";
+import {getArticles, filterArticles, BackendArticle} from "@/utils/articles";
+import Releases from "./releases/page";
+import {useEffect, useState} from "react";
+async function getUserStories(){
+	const articles = await getArticles("CHTC", "Articles", "main")
+	return filterArticles(articles, "pelican", "user")
+}
+async function getNews(){
+	const articles = await getArticles("CHTC", "Articles", "main")
+	return filterArticles(articles, "pelican", "news")
+}
+
 export default function Home() {
+    const [userStories, setUserStories] = useState<BackendArticle[]>([]);
+    const [news, setNews] = useState<BackendArticle[]>([]);
+
+    useEffect(() => {
+        async function fetchData() {
+            const stories = await getUserStories();
+            const newsData = await getNews();
+            setUserStories(stories);
+            setNews(newsData);
+        }
+
+        fetchData();
+    }, []);
     return (
         <Box>
             <BackgroundPage image={hero}/>
@@ -97,6 +123,35 @@ export default function Home() {
                         </Grid>
                     </Grid>
                 </Container>
+                <Container maxWidth={"xl"} sx={{ textAlign: "center", marginTop: "2rem"}}>
+                    <Grid container spacing={2} maxHeight={"500px"}>
+                        {/* User Stories */}
+                        <Grid item xs={12} sm={6} md={6} lg={4} xl={4} sx={{ display: { xs: "none", lg: "block" } }}>
+                                <Typography variant={"h4"} sx={{paddingBottom: "1.5rem"}}>User Stories</Typography>
+                            {userStories.length > 0 && (
+                                <Grid key={userStories[userStories.length - 1].slug.join("-")}>
+                                    <ArticleCard
+                                        key={userStories[userStories.length - 1].slug.join("-")}
+                                        href={`/user-stories/${userStories[userStories.length - 1].slug.join("/")}`}
+                                        article={userStories[userStories.length - 1]}
+                                    />
+                                </Grid>
+                            )}
+                        </Grid>
+                        <Grid item xs={12} sm={6} md={6} lg={4} xl={4}>
+                                <Typography variant={"h4"} sx={{paddingBottom: "1.5rem"}}>News</Typography>
+                            {news.length > 0 && (
+                                <Grid key={news[news.length - 1].slug.join("-")}>
+                                    <ArticleCard href={`/news/${news[news.length - 1].slug.join("/")}`} article={news[news.length - 1]}/>
+                                </Grid>
+                            )}
+                        </Grid>
+                        <Grid item xs={12} sm={6} md={6} lg={4} xl={4}>
+                            <Typography variant={"h4"} sx={{paddingBottom: "1.5rem"}}>Latest Releases</Typography>
+                            <Releases/>
+                        </Grid>
+                    </Grid>
+                </Container>
             </Box>
-        </Box>)
-}
+        </Box>
+    )}

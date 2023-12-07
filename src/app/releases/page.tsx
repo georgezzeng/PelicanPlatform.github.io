@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Link, Typography } from '@mui/material';
+import { Container, Paper, Link, Typography } from '@mui/material';
+import ArrowRight from '@/components/svg/arrowright';
 
 interface Release {
   id: number;
@@ -12,6 +13,7 @@ interface Release {
 
 const Releases = () => {
   const [releases, setReleases] = useState<Release[]>([]);
+  const [latestRelease, setLatestRelease] = useState<Release>();
 
   useEffect(() => {
     const fetchReleases = async () => {
@@ -24,7 +26,6 @@ const Releases = () => {
         console.error('Error fetching releases:', error);
       }
     };
-
     fetchReleases();
   }, []);
 
@@ -43,54 +44,38 @@ const Releases = () => {
   };
 
   return (
-    <div style={{ margin: '20px' }}>
-      <h1 style={{ marginBottom: '20px' }}>Pelican Releases</h1>
-      <TableContainer component={Paper} style={{ maxWidth: '1000px', margin: '20px' }}>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell>
-                <Typography variant="subtitle1" fontWeight="bold">Version</Typography>
-              </TableCell>
-              <TableCell>
-                <Typography variant="subtitle1" fontWeight="bold">Changes</Typography>
-              </TableCell>
-              <TableCell style={{ width: '200px' }}>
-                <Typography variant="subtitle1" fontWeight="bold">Published At</Typography>
-              </TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {releases.map((release) => (
-              <TableRow key={release.id}>
-                <TableCell>
-                  <Link href={release.html_url} target="_blank">{release.name}</Link>
-                </TableCell>
-                <TableCell>
-                  <ul>
-                    {truncateChanges(release.body).split('*').map((item, index) => {
-                      if (index !== 0 && item.trim() !== '') {
-                        const pullRequestLink = item.split('by')[1]?.trim().split('in')[0]?.trim();
-                        return (
-                          <li key={index}>
-                            <Link href={pullRequestLink} target="_blank">{item.trim()}</Link>
-                          </li>
-                        );
-                      }
-                      return null;
-                    })}
-                  </ul>
-                </TableCell>
-                <TableCell>
-                  <Typography variant="body1">{formatDate(release.published_at)}</Typography>
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-    </div>
+    <Paper elevation={3} style={{backgroundColor:"primary.main"}}>
+      {Array.isArray(releases) && (
+        <Container style={{ display: 'flex', flexDirection: 'column'}}>
+          {releases.slice(0, 4).map((release) => (
+            <div key={release.id} style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', marginTop:"1.1em"}}>
+              <div style={{ display: 'flex', flexDirection: 'column' }}>
+                <Typography variant="h4" fontWeight="bold" align="left">
+                  <Link href={release.html_url} target="_blank" underline="hover" color="inherit">
+                    Release
+                  </Link>
+                </Typography>
+                <Typography variant="body1" align="left" fontStyle="italic" color="gray">
+                  {formatDate(release.published_at)}
+                </Typography>
+              </div>
+              <Typography variant="h3" fontWeight="bold" align="right">
+                <Link href={release.html_url} target="_blank" underline="hover">
+                  {release.name}
+                </Link>
+              </Typography>
+            </div>
+          ))}
+        </Container>
+      )}
+      <Link href={"https://github.com/PelicanPlatform/pelican/releases"} style={{margin:"1em"}} underline='hover' color="inherit">
+          <Typography variant={"h6"} sx={{display: "inline", paddingRight: ".2rem"}}>
+              See More
+          </Typography>
+          <ArrowRight height={18} width={24} fill={"currentColor"}/>
+      </Link>
+    </Paper>
   );
-};
+  };
 
 export default Releases;
