@@ -1,10 +1,4 @@
-import Markdown from "react-markdown";
-import rehypeRaw from "rehype-raw";
-import {Box, Container, Typography} from "@mui/material";
-import Balancer from "react-wrap-balancer";
-
 import {getArticles, filterArticles, getArticle} from "@/utils/articles";
-import StyledBlock from "@/components/StyledBlock";
 import {Article} from "@/components/Article";
 
 export async function generateStaticParams() {

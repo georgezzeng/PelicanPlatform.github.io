@@ -2,20 +2,15 @@
 
 import ExportedImage from "next-image-export-optimizer";
 import {BackgroundPage} from "@/components/Background";
-import {Box, Container, Grid, Typography} from '@mui/material';
+import {Box, Container, Grid, Typography, Link, Divider} from '@mui/material';
 import hero from '../public/static/images/pelican-hero.png'
-import {Poppins} from 'next/font/google'
 import ArrowRight from "@/components/svg/arrowright";
-import styles from "./page.module.css"
-
 import pelicanDiagram from "../public/static/images/pelican-concept-map_Realistic.png"
-
-import Link from "next/link";
-
-import {HeroCard, ArticleCard} from "@/components/Article";
+import {ArticleCard} from "@/components/Article";
 import {getArticles, filterArticles, BackendArticle} from "@/utils/articles";
-import Releases from "./releases/page";
+import Releases from "../components/Releases";
 import {useEffect, useState} from "react";
+
 async function getUserStories(){
 	const articles = await getArticles("CHTC", "Articles", "main")
 	return filterArticles(articles, "pelican", "user")
@@ -84,10 +79,7 @@ export default function Home() {
                 </Box>
             </Container>
 
-
-
-
-            <Box sx={{backgroundColor: "#F5F5F5", paddingTop: {xs: "11rem", sm: "8rem", md:"6rem", lg: "10rem"}, paddingBottom: "4rem"}}>
+            <Box sx={{backgroundColor: "#F5F5F5", paddingTop: {xs: "11rem", sm: "8rem", md:"6rem", lg: "10rem"}, paddingBottom: {xs: "32rem", sm: "4rem"}}}>
                 <Container maxWidth={"xl"}>
                     <Grid container spacing={2}>
                         <Grid item xs={12} md={6}>
@@ -111,10 +103,24 @@ export default function Home() {
                                     <Box sx={{marginTop: "auto", paddingTop: "2rem", fontWeight: "300"}}>
                                         <Box sx={{color: "#0885ff"}}>
                                             <Link href={"https://osg-htc.org/services/osdf.html"}>
-                                                <Typography variant={"h6"} sx={{display: "inline", paddingRight: ".2rem"}}>
+                                                <Typography variant={"h6"} 
+                                                sx={{
+                                                    display: "inline", 
+                                                    paddingRight: ".2rem",
+                                                    transition: 'padding-right 0.3s ease-in-out',
+                                                    '&:hover': {
+                                                        '.arrow-icon': {
+                                                        transform: 'translateX(0.3em)',
+                                                        },
+                                                    },
+                                                    '.arrow-icon': {
+                                                        paddingLeft: '0.3em',
+                                                        transition: 'transform 0.3s ease-in-out',
+                                                    }
+                                                }}>
                                                     Learn More
+                                                    <ArrowRight className="arrow-icon" height={18} width={24} fill={"currentColor"}/>
                                                 </Typography>
-                                                <ArrowRight height={18} width={24} fill={"currentColor"}/>
                                             </Link>
                                         </Box>
                                     </Box>
@@ -123,13 +129,16 @@ export default function Home() {
                         </Grid>
                     </Grid>
                 </Container>
-                <Container maxWidth={"xl"} sx={{ textAlign: "center", marginTop: "2rem"}}>
+
+                <Container maxWidth={"xl"} sx={{ textAlign: "center"}}>
+                <Divider sx={{margin: 6}}/>
                     <Grid container spacing={2} maxHeight={"500px"}>
-                        {/* User Stories */}
                         <Grid item xs={12} sm={6} md={6} lg={4} xl={4} sx={{ display: { xs: "none", lg: "block" } }}>
-                                <Typography variant={"h4"} sx={{paddingBottom: "1.5rem"}}>User Stories</Typography>
+                            <Typography variant={"h4"} sx={{paddingBottom: "1.5rem"}}>
+                                <Link href={"/user-stories"} underline="hover" color="inherit">User Stories</Link>
+                            </Typography>
                             {userStories.length > 0 && (
-                                <Grid key={userStories[userStories.length - 1].slug.join("-")}>
+                                <Grid key={userStories[userStories.length - 1].slug.join("-")} sx={{backgroundColor: "#FFFFFF"}}>
                                     <ArticleCard
                                         key={userStories[userStories.length - 1].slug.join("-")}
                                         href={`/user-stories/${userStories[userStories.length - 1].slug.join("/")}`}
@@ -138,15 +147,17 @@ export default function Home() {
                                 </Grid>
                             )}
                         </Grid>
-                        <Grid item xs={12} sm={6} md={6} lg={4} xl={4}>
-                                <Typography variant={"h4"} sx={{paddingBottom: "1.5rem"}}>News</Typography>
+                        <Grid item xs={12} sm={6} md={6} lg={4} xl={4} sx={{order: { xs: 2, sm: 1 }}}>
+                            <Typography variant={"h4"} sx={{paddingBottom: "1.5rem", marginTop: {xs:"1.5rem", sm:"0"}}}>
+                                <Link href={"/news"} underline="hover" color="inherit">News</Link>
+                            </Typography>
                             {news.length > 0 && (
-                                <Grid key={news[news.length - 1].slug.join("-")}>
+                                <Grid key={news[news.length - 1].slug.join("-")} sx={{backgroundColor: "#FFFFFF"}}>
                                     <ArticleCard href={`/news/${news[news.length - 1].slug.join("/")}`} article={news[news.length - 1]}/>
                                 </Grid>
                             )}
                         </Grid>
-                        <Grid item xs={12} sm={6} md={6} lg={4} xl={4}>
+                        <Grid item xs={12} sm={6} md={6} lg={4} xl={4} sx={{order: { xs: 1, sm: 2 }}}>
                             <Typography variant={"h4"} sx={{paddingBottom: "1.5rem"}}>Latest Releases</Typography>
                             <Releases/>
                         </Grid>
