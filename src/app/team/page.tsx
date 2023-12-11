@@ -1,10 +1,6 @@
 import {Box, Container, Grid} from '@mui/material';
-
-
 import {team} from "./team.json"
 import {LeaderCard, StaffCard} from "./cards";
-
-
 
 export default function Page() {
 

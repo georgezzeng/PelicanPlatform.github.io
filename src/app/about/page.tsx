@@ -1,7 +1,5 @@
 import { Box, Container, Typography, Paper, List, ListItem, ListItemText, Divider, Link} from "@mui/material";
 import ExportedImage from "next-image-export-optimizer";
-import hero from '../../public/static/images/pelican-hero.png'
-import {BackgroundPage} from "@/components/Background";
 export default function Page() {
     
     return( 

@@ -1,4 +1,4 @@
-import {Grid, Typography, Box, Paper, Container} from '@mui/material';
+import {Grid, Typography, Box, Container} from '@mui/material';
 import Balancer from "react-wrap-balancer";
 
 import {BackendArticle} from '@/utils/articles'
@@ -50,7 +50,7 @@ export const ArticleCard = ({href, article} : CardProps) => {
 	const style = {
 		transition: "box-shadow .2s",
 		boxShadow: "grey 1px 1px 3px",
-		"&:hover": {boxShadow: "grey 1px 1px 5px"}
+		"&:hover": {boxShadow: "grey 1px 1px 5px"},
 	}
 
 	return (

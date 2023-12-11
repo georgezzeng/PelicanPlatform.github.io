@@ -1,14 +1,5 @@
 import ExportedImage from "next-image-export-optimizer";
-import {BackgroundPage} from "@/components/Background";
-import {Box, Container, Grid, Typography, Paper, Stack, Chip} from '@mui/material';
-import ContentCopyIcon from '@mui/icons-material/ContentCopy';
-import hero from '../public/static/images/pelican-hero.png'
-import {Poppins} from 'next/font/google'
-import ArrowRight from "@/components/svg/arrowright";
-import styles from "../page.module.css"
-
-
-import Link from "next/link";
+import {Box, Grid, Typography, Paper} from '@mui/material';
 
 interface LeaderCardProps {
 	name: string,
