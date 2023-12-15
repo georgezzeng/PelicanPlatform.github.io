@@ -130,13 +130,13 @@ export default function Home() {
                     </Grid>
                 </Container>
 
-                <Container maxWidth={"xl"} sx={{ textAlign: "center"}}>
+                <Container maxWidth={"xl"}>
                 <Divider sx={{margin: 6}}/>
                     <Grid container spacing={2} maxHeight={"500px"}>
                         <Grid item xs={12} sm={6} md={6} lg={4} xl={4} sx={{ display: { xs: "none", lg: "block" } }}>
-                            <Typography variant={"h4"} sx={{paddingBottom: "1.5rem"}}>
+                            <Typography variant={"h4"} sx={{paddingBottom: "1.5rem", textAlign:"center"}}>
                                 <Link href={"/user-stories"} underline="hover" color="inherit">User Stories</Link>
-                            </Typography>
+                            </Typography> 
                             {userStories.length > 0 && (
                                 <Grid key={userStories[userStories.length - 1].slug.join("-")} sx={{backgroundColor: "#FFFFFF"}}>
                                     <ArticleCard
@@ -148,7 +148,7 @@ export default function Home() {
                             )}
                         </Grid>
                         <Grid item xs={12} sm={6} md={6} lg={4} xl={4} sx={{order: { xs: 2, sm: 1 }}}>
-                            <Typography variant={"h4"} sx={{paddingBottom: "1.5rem", marginTop: {xs:"1.5rem", sm:"0"}}}>
+                            <Typography variant={"h4"} sx={{paddingBottom: "1.5rem", marginTop: {xs:"1.5rem", sm:"0", textAlign:"center"}}}>
                                 <Link href={"/news"} underline="hover" color="inherit">News</Link>
                             </Typography>
                             {news.length > 0 && (
@@ -158,7 +158,7 @@ export default function Home() {
                             )}
                         </Grid>
                         <Grid item xs={12} sm={6} md={6} lg={4} xl={4} sx={{order: { xs: 1, sm: 2 }}}>
-                            <Typography variant={"h4"} sx={{paddingBottom: "1.5rem"}}>Latest Releases</Typography>
+                            <Typography variant={"h4"} sx={{paddingBottom: "1.5rem", textAlign:"center"}}>Latest Releases</Typography>
                             <Releases/>
                         </Grid>
                     </Grid>
