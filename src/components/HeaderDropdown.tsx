@@ -9,13 +9,13 @@ interface HeaderLinkProps {
     href: string
     icon: ReactNode
     target: string
-    handleDrawer: () => void
+    onClick: () => void
 }
   
-export const HeaderLink = ({ name, href, icon, target, handleDrawer }: HeaderLinkProps) => {
+export const HeaderLink = ({ name, href, icon, target, onClick }: HeaderLinkProps) => {
     return (
         <ListItemButton
-        onClick={handleDrawer}>
+        onClick={onClick}>
             <ListItemIcon sx={{ marginRight: "-0.8em", fontSize:"1.5em", marginLeft: "1em" }}>
                 {icon}
             </ListItemIcon>
@@ -28,10 +28,10 @@ export const HeaderLink = ({ name, href, icon, target, handleDrawer }: HeaderLin
     )
 }
 
-export const HeaderMainLink = ({ name, href, icon, target, handleDrawer }: HeaderLinkProps) => {
+export const HeaderMainLink = ({ name, href, icon, target, onClick }: HeaderLinkProps) => {
     return (
         <ListItemButton
-        onClick={handleDrawer}>
+        onClick={onClick}>
             <ListItemIcon sx={{ marginRight: "-0.8em", fontSize: "2em" }}>
                 {icon}
             </ListItemIcon>

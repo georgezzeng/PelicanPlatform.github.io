@@ -72,21 +72,21 @@ export const BurgerMenu = () => {
       }
     >
         <Divider sx={{my:2}}/>
-        <HeaderMainLink name={"Home"} href={"/"} icon={<Home />} target="_self" handleDrawer={handleDrawer} />
-        <HeaderMainLink name={"Team"} href={"/team"} icon={<Groups />} target="_self" handleDrawer={handleDrawer}/>
+        <HeaderMainLink name={"Home"} href={"/"} icon={<Home />} target="_self" onClick={handleDrawer} />
+        <HeaderMainLink name={"Team"} href={"/team"} icon={<Groups />} target="_self" onClick={handleDrawer}/>
 
         <HeaderDropdown name={"About"} icon={<Info />} >
-        <HeaderLink name={"What's Pelican?"} href={"/about"} icon={<Help />} target="_self" handleDrawer={handleDrawer}/>
-        <HeaderLink name={"Contact"} href={"/contact"} icon={<Email />} target="_self" handleDrawer={handleDrawer}/>
+        <HeaderLink name={"What's Pelican?"} href={"/about"} icon={<Help />} target="_self" onClick={handleDrawer}/>
+        <HeaderLink name={"Contact"} href={"/contact"} icon={<Email />} target="_self" onClick={handleDrawer}/>
         </HeaderDropdown>
 
         <HeaderDropdown name={"Community"} icon={<Group />} >
-        <HeaderLink name={"User Stories"} href={"/user-stories"} icon={<Grade />} target="_self" handleDrawer={handleDrawer}/>
-        <HeaderLink name={"News"} href={"/news"} icon={<Newspaper />} target="_self" handleDrawer={handleDrawer}/>
+        <HeaderLink name={"User Stories"} href={"/user-stories"} icon={<Grade />} target="_self" onClick={handleDrawer}/>
+        <HeaderLink name={"News"} href={"/news"} icon={<Newspaper />} target="_self" onClick={handleDrawer}/>
         </HeaderDropdown>
 
-        <HeaderMainLink name={"Documentation"} href={"https://docs.pelicanplatform.org/"} icon={<Description />} target="_blank" handleDrawer={handleDrawer}/>
-        <HeaderMainLink name={"GitHub"} href={"https://github.com/PelicanPlatform"} icon={<GitHub />} target="_blank" handleDrawer={handleDrawer}/>
+        <HeaderMainLink name={"Documentation"} href={"https://docs.pelicanplatform.org/"} icon={<Description />} target="_blank" onClick={handleDrawer}/>
+        <HeaderMainLink name={"GitHub"} href={"https://github.com/PelicanPlatform"} icon={<GitHub />} target="_blank" onClick={handleDrawer}/>
     </List>
     </Drawer>
     </Box>
