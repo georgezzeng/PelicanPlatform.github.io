@@ -9,7 +9,8 @@ import styles from "../../app/page.module.css"
 import {Poppins} from "next/font/google";
 import Link from "next/link";
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-
+import GitHubIcon from '@mui/icons-material/GitHub';
+import DescriptionIcon from '@mui/icons-material/Description';
 import PelicanLogo from "../../public/static/images/PelicanPlatformLogo_Icon.png"
 import {Typography} from "@mui/material";
 
@@ -90,6 +91,9 @@ export const Header = () => {
 						<ArrowDropDownIcon />
 					</Typography>
 				</Link>
+				<Link href={"https://docs.pelicanplatform.org/"} style={{display: "flex"}} target="_blank">
+					<Typography id="docs-header" my={"auto"} pl={2} lineHeight={1} variant={"h6"}>Documentation</Typography>
+				</Link>
 				<Menu
 						id="community-menu"
 						anchorEl={anchorEl}
@@ -107,15 +111,34 @@ export const Header = () => {
 					</Link>
 				</Menu>
 			</Box>
-			<div>
-				<a href={"https://github.com/PelicanPlatform"}>
-					<ExportedImage
-							src={githubMark}
-							alt={"Github Mark"}
-							height={32}
-					/>
-				</a>
-			</div>
+			<Box sx={{display:"flex", flexDirection:"row", alignItems:"center"}}>
+				<Link
+					href={"https://docs.pelicanplatform.org/"}
+					
+					target="_blank"
+				>
+					<DescriptionIcon 
+						fontSize="large" 
+						sx={{
+							":hover": {
+								transform: "scale(1.15)",
+								transition: "transform 0.3s",
+						},
+						marginTop: "2px"
+					}}/>
+				</Link>
+				<Link href={"https://github.com/PelicanPlatform"} target="_blank">
+					<GitHubIcon 
+						fontSize="large"
+						sx={{
+							":hover": {
+								transform: "scale(1.15)",
+								transition: "transform 0.3s",
+							},
+							marginLeft: "1rem"
+						}} />
+				</Link>
+			</Box>
 		</div>
 	)
 }
