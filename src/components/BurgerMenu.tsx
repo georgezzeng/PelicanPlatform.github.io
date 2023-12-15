@@ -36,7 +36,13 @@ export const BurgerMenu = () => {
         </IconButton>
     <Drawer anchor={"right"} open={openDrawer} onClose={handleDrawer} 
         sx={{
-            "& .MuiDrawer-paper": {boxSizing: "border-box", width: "100%", maxWidth: "20rem"},
+            "& .MuiDrawer-paper": {
+                boxSizing: "border-box",
+                width: "100%",
+                "@media (min-width: 576px)": {
+                    width: "30rem",
+                }
+            },
             boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.25)",
             backdropFilter: "blur(2px)",
             WebkitBackdropFilter: "blur(2px)",
@@ -44,11 +50,12 @@ export const BurgerMenu = () => {
         }}
     >
     <List
+        sx={{margin: "1rem" }}
       component="nav"
       aria-labelledby="nested-list-subheader"
       subheader={
         <ListSubheader component="div" id="nested-list-subheader">
-            <Box style={{display: "flex", flexDirection:"row", justifyContent:"start", marginTop:"1rem", marginBottom:"1rem"}}>
+            <Box style={{display: "flex", flexDirection:"row", justifyContent:"start" }}>
                 <ExportedImage src={PelicanLogo} alt={"Pelican Logo"} height={48}/>
                 <Typography variant={"h5"} pl={1} my={"auto"}>Pelican Platform</Typography>
                 <IconButton
@@ -64,22 +71,22 @@ export const BurgerMenu = () => {
         </ListSubheader>
       }
     >
-        <Divider />
-        <HeaderMainLink name={"Home"} href={"/"} icon={<Home />} target="_self" />
-        <HeaderMainLink name={"Team"} href={"/team"} icon={<Groups />} target="_self"/>
+        <Divider sx={{my:2}}/>
+        <HeaderMainLink name={"Home"} href={"/"} icon={<Home />} target="_self" handleDrawer={handleDrawer} />
+        <HeaderMainLink name={"Team"} href={"/team"} icon={<Groups />} target="_self" handleDrawer={handleDrawer}/>
 
         <HeaderDropdown name={"About"} icon={<Info />} >
-        <HeaderLink name={"What's Pelican?"} href={"/about"} icon={<Help />} target="_self"/>
-        <HeaderLink name={"Contact"} href={"/contact"} icon={<Email />} target="_self"/>
+        <HeaderLink name={"What's Pelican?"} href={"/about"} icon={<Help />} target="_self" handleDrawer={handleDrawer}/>
+        <HeaderLink name={"Contact"} href={"/contact"} icon={<Email />} target="_self" handleDrawer={handleDrawer}/>
         </HeaderDropdown>
 
         <HeaderDropdown name={"Community"} icon={<Group />} >
-        <HeaderLink name={"User Stories"} href={"/user-stories"} icon={<Grade />} target="_self"/>
-        <HeaderLink name={"News"} href={"/news"} icon={<Newspaper />} target="_self"/>
+        <HeaderLink name={"User Stories"} href={"/user-stories"} icon={<Grade />} target="_self" handleDrawer={handleDrawer}/>
+        <HeaderLink name={"News"} href={"/news"} icon={<Newspaper />} target="_self" handleDrawer={handleDrawer}/>
         </HeaderDropdown>
 
-        <HeaderMainLink name={"Documentation"} href={"https://docs.pelicanplatform.org/"} icon={<Description />} target="_blank"/>
-        <HeaderMainLink name={"GitHub"} href={"https://github.com/PelicanPlatform"} icon={<GitHub />} target="_blank"/>
+        <HeaderMainLink name={"Documentation"} href={"https://docs.pelicanplatform.org/"} icon={<Description />} target="_blank" handleDrawer={handleDrawer}/>
+        <HeaderMainLink name={"GitHub"} href={"https://github.com/PelicanPlatform"} icon={<GitHub />} target="_blank" handleDrawer={handleDrawer}/>
     </List>
     </Drawer>
     </Box>

@@ -9,11 +9,13 @@ interface HeaderLinkProps {
     href: string
     icon: ReactNode
     target: string
+    handleDrawer: () => void
 }
   
-export const HeaderLink = ({ name, href, icon, target }: HeaderLinkProps) => {
+export const HeaderLink = ({ name, href, icon, target, handleDrawer }: HeaderLinkProps) => {
     return (
-        <ListItemButton>
+        <ListItemButton
+        onClick={handleDrawer}>
             <ListItemIcon sx={{ marginRight: "-0.8em", fontSize:"1.5em", marginLeft: "1em" }}>
                 {icon}
             </ListItemIcon>
@@ -26,16 +28,17 @@ export const HeaderLink = ({ name, href, icon, target }: HeaderLinkProps) => {
     )
 }
 
-export const HeaderMainLink = ({ name, href, icon, target }: HeaderLinkProps) => {
+export const HeaderMainLink = ({ name, href, icon, target, handleDrawer }: HeaderLinkProps) => {
     return (
-        <ListItemButton>
+        <ListItemButton
+        onClick={handleDrawer}>
             <ListItemIcon sx={{ marginRight: "-0.8em", fontSize: "2em" }}>
                 {icon}
             </ListItemIcon>
-            <Typography variant="h5">
+            <Typography variant="h4">
                 <Link href={href} target={target}>
                     {name}
-                </Link>
+            </Link>
             </Typography>
         </ListItemButton>
     )
@@ -53,7 +56,7 @@ export const HeaderDropdown = ({ name, children, icon }: { name: string, childre
                 <ListItemIcon sx={{ marginRight: "-0.8em", fontSize: "2em"  }}>
                     {icon}
                 </ListItemIcon>
-                <Typography variant="h5">
+                <Typography variant="h4">
                     {name}
                 </Typography>
                 {openState ? <ExpandLess sx={{ marginLeft: "1em" }} /> : <ExpandMore sx={{ marginLeft: "0.5em" }} />}
