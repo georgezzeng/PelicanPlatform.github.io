@@ -1,20 +1,20 @@
 'use client'
 
 import ExportedImage from "next-image-export-optimizer";
-import githubMark from "../../public/static/images/github-mark.png"
-
+import BurgerMenu from "@/components/BurgerMenu";
 import React, {useState, useEffect, useRef} from "react";
-import {Grid, Box, Container, Divider, Menu, MenuItem, Button, Popper, Grow, Paper, ClickAwayListener, MenuList} from "@mui/material"
+import { Box, Menu, MenuItem } from "@mui/material"
 import styles from "../../app/page.module.css"
-import {Poppins} from "next/font/google";
 import Link from "next/link";
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import DescriptionIcon from '@mui/icons-material/Description';
 import PelicanLogo from "../../public/static/images/PelicanPlatformLogo_Icon.png"
-import {Typography} from "@mui/material";
+import {Typography, useTheme, useMediaQuery} from "@mui/material";
 
 export const Header = () => {
+	const theme = useTheme();
+	const isViewportSmallerThanMedium = useMediaQuery(theme.breakpoints.down("md"));
 
 	let [scrolledTop, setScrolledTop] = useState(true);
 
@@ -35,6 +35,7 @@ export const Header = () => {
 	  setAnchorEl(null);
 	};
 	return (
+		
 		<div className={`${styles.header} ${scrolledTop ? styles.headerScrolled : ""}`} style={{
 			display: "flex",
 			justifyContent: "space-between",
@@ -43,7 +44,10 @@ export const Header = () => {
 			zIndex: "1",
 			width: "100%",
 			overflow: "hidden"
-		}}>
+		}}> {isViewportSmallerThanMedium ? 
+				<BurgerMenu/>
+			: 
+			 <>
 			<Box display={"flex"}>
 				<Link href={"/"}>
 					<Box style={{display: "flex"}}>
@@ -139,6 +143,8 @@ export const Header = () => {
 						}} />
 				</Link>
 			</Box>
+			</>
+			}
 		</div>
 	)
 }
