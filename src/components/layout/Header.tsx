@@ -1,20 +1,20 @@
 'use client'
 
 import ExportedImage from "next-image-export-optimizer";
-import githubMark from "../../public/static/images/github-mark.png"
-
+import BurgerMenu from "@/components/BurgerMenu";
 import React, {useState, useEffect, useRef} from "react";
-import {Grid, Box, Container, Divider, Menu, MenuItem, Button, Popper, Grow, Paper, ClickAwayListener, MenuList} from "@mui/material"
+import { Box, Menu, MenuItem } from "@mui/material"
 import styles from "../../app/page.module.css"
-import {Poppins} from "next/font/google";
 import Link from "next/link";
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import DescriptionIcon from '@mui/icons-material/Description';
 import PelicanLogo from "../../public/static/images/PelicanPlatformLogo_Icon.png"
-import {Typography} from "@mui/material";
+import {Typography, useTheme, useMediaQuery} from "@mui/material";
+import {ArrowDropUp, ArrowDropDown} from "@mui/icons-material";
 
 export const Header = () => {
+	const theme = useTheme();
+	const isViewportSmallerThanMedium = useMediaQuery(theme.breakpoints.down("md"));
 
 	let [scrolledTop, setScrolledTop] = useState(true);
 
@@ -35,6 +35,7 @@ export const Header = () => {
 	  setAnchorEl(null);
 	};
 	return (
+		
 		<div className={`${styles.header} ${scrolledTop ? styles.headerScrolled : ""}`} style={{
 			display: "flex",
 			justifyContent: "space-between",
@@ -43,7 +44,10 @@ export const Header = () => {
 			zIndex: "1",
 			width: "100%",
 			overflow: "hidden"
-		}}>
+		}}> {isViewportSmallerThanMedium ? 
+				<BurgerMenu/>
+			: 
+			 <>
 			<Box display={"flex"}>
 				<Link href={"/"}>
 					<Box style={{display: "flex"}}>
@@ -56,7 +60,15 @@ export const Header = () => {
 					aria-haspopup="true"
 					aria-expanded={anchorEl?.id === "about-header" ? 'true' : undefined}
 				>
-					<Typography id="about-header" my={"auto"} pl={2} lineHeight={1} variant={"h6"} onClick={handleClick}>About</Typography>
+					<Typography id="about-header" display={"flex"} my={"auto"} pl={2} lineHeight={1} variant={"h6"} onClick={handleClick}>
+						<Box display={"inline"} my={"auto"}>
+							About
+						</Box>
+						{anchorEl?.id === "about-header" ?
+								<ArrowDropUp /> :
+								<ArrowDropDown />
+						}
+					</Typography>
 				</Link>
 				<Menu
 					id="about-menu"
@@ -70,14 +82,13 @@ export const Header = () => {
 					<Link href={"/about"}>
 						<MenuItem onClick={handleClose}>What&#39;s Pelican?</MenuItem>
 					</Link>
+					<Link href={"/team"}>
+						<MenuItem onClick={handleClose}>Team</MenuItem>
+					</Link>
 					<Link href={"/contact"}>
 						<MenuItem onClick={handleClose}>Contact</MenuItem>
 					</Link>
-					
 				</Menu>
-				<Link href={"/team"} style={{display: "flex"}}>
-					<Typography id="team-header" my={"auto"} pl={2} lineHeight={1} variant={"h6"}>Team</Typography>
-				</Link>
 				<Link href={"#"} style={{display: "flex"}}
 							id="community-button"
 							aria-controls={anchorEl?.id === "community-header" ? 'community-menu' : undefined}
@@ -88,7 +99,10 @@ export const Header = () => {
 						<Box display={"inline"} my={"auto"}>
 							Community
 						</Box>
-						<ArrowDropDownIcon />
+						{anchorEl?.id === "community-header" ?
+								<ArrowDropUp /> :
+								<ArrowDropDown />
+						}
 					</Typography>
 				</Link>
 				<Link href={"https://docs.pelicanplatform.org/"} style={{display: "flex"}} target="_blank">
@@ -139,6 +153,8 @@ export const Header = () => {
 						}} />
 				</Link>
 			</Box>
+			</>
+			}
 		</div>
 	)
 }
