@@ -3,7 +3,7 @@ import ExportedImage from "next-image-export-optimizer";
 export default function Page() {
     
     return( 
-        <Box pt={2}>
+        <Box pt={4}>
             <Container maxWidth={"md"}>
                 <Typography variant={"h3"} sx={{fontWeight: "600", textAlign: { xs:"center", lg: "left"}}}>
                     What Is the Pelican Platform?
