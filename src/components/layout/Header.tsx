@@ -105,6 +105,25 @@ export const Header = () => {
 						}
 					</Typography>
 				</Link>
+				
+				<Link href={"#"} style={{display: "flex"}}
+							id="software-button"
+							aria-controls={anchorEl?.id === "software-header" ? 'software-menu' : undefined}
+							aria-haspopup="true"
+							aria-expanded={anchorEl?.id === "software-header" ? 'true' : undefined}
+				>
+					<Typography id="software-header" display={"flex"} my={"auto"} pl={2} lineHeight={1} variant={"h6"} onClick={handleClick}>
+						<Box display={"inline"} my={"auto"}>
+							Software
+						</Box>
+						{anchorEl?.id === "software-header" ?
+								<ArrowDropUp /> :
+								<ArrowDropDown />
+						}
+					</Typography>
+				</Link>
+				
+
 				<Link href={"https://docs.pelicanplatform.org/"} style={{display: "flex"}} target="_blank">
 					<Typography id="docs-header" my={"auto"} pl={2} lineHeight={1} variant={"h6"}>Documentation</Typography>
 				</Link>
@@ -122,6 +141,23 @@ export const Header = () => {
 					</Link>
 					<Link href={"/news"}>
 						<MenuItem onClick={handleClose}>News</MenuItem>
+					</Link>
+				</Menu>
+
+				<Menu
+						id="software-menu"
+						anchorEl={anchorEl}
+						open={anchorEl?.id === "software-header"}
+						onClose={handleClose}
+						MenuListProps={{
+							'aria-labelledby': 'software-button',
+						}}
+				>
+					<Link href={"/release-plan"}>
+						<MenuItem onClick={handleClose}>Release Plan</MenuItem>
+					</Link>
+					<Link href={"https://github.com/PelicanPlatform/pelican/releases"} target="_blank">
+						<MenuItem onClick={handleClose}>Releases</MenuItem>
 					</Link>
 				</Menu>
 			</Box>
