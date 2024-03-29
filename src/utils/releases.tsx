@@ -36,7 +36,11 @@ export async function organizeReleases() {
         } else {
             // It's a minor release
             if (!organizedReleases[baseVersion]) {
-            organizedReleases[baseVersion] = { mainRelease: {}, minorReleases: [release] };
+            organizedReleases[baseVersion] = { mainRelease: {
+              tag_name: '',
+              target_commitish: '',
+              body: ''
+            }, minorReleases: [release] };
             } else {
             organizedReleases[baseVersion].minorReleases.push(release);
             }

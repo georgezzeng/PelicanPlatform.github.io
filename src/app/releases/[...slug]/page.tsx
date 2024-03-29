@@ -2,7 +2,6 @@ import { CircularProgress, Container, Typography, Box, Divider, Card, CardConten
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import React from "react";
 import Markdown from "react-markdown";
-import remarkGfm from "remark-gfm";
 import rehypeRaw from 'rehype-raw';
 import { GitHubReleaseData } from "../../../utils/github"; // Assuming this is correctly defined
 
@@ -13,7 +12,7 @@ export async function generateStaticParams() {
   return slugs.map((slug: string) => ({ params: { slug: slug.split('.') } }));
 }
 
-export async function getPageData(slug: string[]) {
+async function getPageData(slug: string[]) {
   const allAssetsApiUrl = `https://api.github.com/repos/PelicanPlatform/pelican/releases`;
   const releasesData = await fetch(allAssetsApiUrl).then(response => response.json());
   const fullSlug = slug.join('.');
