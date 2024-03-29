@@ -3,6 +3,8 @@
 name: Deploy Next.js site to Pages
 
 on:
+  pull_request:
+    branches: ["main"]
   # Runs on pushes targeting the default branch
   push:
     branches: ["main"]
@@ -81,6 +83,7 @@ jobs:
           find ./out | sed -e "s/[^-][^\/]*\//  |/g" -e "s/|\([^ ]\)/|-\1/"
 
       - name: Deploy 🚀
+        if: ${{ github.event_name == 'push' }}
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: ./src/out # The folder the action should deploy.
