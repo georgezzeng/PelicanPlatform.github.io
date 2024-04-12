@@ -1,0 +1,3 @@
+[submodule "src/staff-list"]
+	path = src/staff-list
+	url = https://github.com/CHTC/staff-list.git
