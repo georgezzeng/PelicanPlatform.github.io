@@ -11,6 +11,5 @@ export const loadStaffData = (): Member[] => {
     const fileContents = fs.readFileSync(filePath, 'utf8');
     return yaml.load(fileContents) as Member;
   });
-  console.log(staff);
   return staff;
 };
