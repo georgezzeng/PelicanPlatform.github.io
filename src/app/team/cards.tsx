@@ -14,7 +14,7 @@ export function LeaderCard({name, title, image, institution, pelican}: Member) {
 				}}>
 					<Box sx={{position: "relative", aspectRatio: 1}}>
 						<ExportedImage
-							src={`static/staff-list/${image}`}
+							src={`/staff-list/${image}`}
 							alt={name}
 							objectFit={"cover"}
 							fill={true}
@@ -53,7 +53,7 @@ export function StaffCard({name, title, image, institution, pelican}: Member) {
 					bgcolor: "primary.light",
 				}}>
 					<ExportedImage
-							src={`static/staff-list/${image}`}
+							src={`../staff-list/${image}`}
 							alt={name}
 							height={150}
 							width={150}
