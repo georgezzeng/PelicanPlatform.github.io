@@ -16,10 +16,10 @@ export function LeaderCard({name, title, image, institution, pelican}: Member) {
 						<ExportedImage
 							src={`/staff-list/${image}`}
 							alt={name}
-							objectFit={"cover"}
 							fill={true}
 							style={{
 								borderRadius: "1rem",
+								objectFit: "cover",
 							}}
 						/>
 					</Box>
@@ -59,6 +59,7 @@ export function StaffCard({name, title, image, institution, pelican}: Member) {
 							width={150}
 							style={{
 								borderRadius: "1rem",
+								objectFit: "cover",
 							}}
 					/>
 				</Paper>
