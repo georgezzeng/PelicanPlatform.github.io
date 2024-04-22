@@ -132,7 +132,7 @@ export default function Home() {
 
                 <Container maxWidth={"xl"}>
                 <Divider sx={{margin: 6}}/>
-                    <Grid container spacing={2} maxHeight={"500px"}>
+                    <Grid container spacing={2}>
                         <Grid item xs={12} sm={6} md={6} lg={4} xl={4} sx={{ display: { xs: "none", lg: "block" } }}>
                             <Typography variant={"h4"} sx={{paddingBottom: "1.5rem", textAlign:"center"}}>
                                 <Link href={"/user-stories"} underline="hover" color="inherit">User Stories</Link>

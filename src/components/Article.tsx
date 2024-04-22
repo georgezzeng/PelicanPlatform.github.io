@@ -63,7 +63,7 @@ export const ArticleCard = ({href, article} : CardProps) => {
 					<Box pl={2} p={2}>
 						<Box py={1} pt={1}>
 							<TopStyledBlock height={".25rem"} width={"5rem"} offset={"-.75rem"}>
-								<Typography variant={"h6"}><Balancer>{article.title}</Balancer></Typography>
+								<Typography variant={"h6"} sx={{fontWeight: "bold"}}><Balancer>{article.title}</Balancer></Typography>
 							</TopStyledBlock>
 						</Box>
 						<Typography variant={"body1"}>{article.excerpt}</Typography>
