@@ -18,7 +18,7 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
 					<Typography variant={"h2"}>User Stories</Typography>
 				</Box>
 				<Container maxWidth={"xl"}>
-					<Grid container >
+					<Grid  container spacing={1}>
 						{articles.map(article =>
 								<Grid key={article.slug.join("-")} item xs={12} md={6} lg={4}>
 									<ArticleCard key={article.slug.join("-")} href={`/user-stories/${article.slug.join("/")}`} article={article}/>
