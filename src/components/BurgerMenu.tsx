@@ -16,6 +16,9 @@ export const BurgerMenu = () => {
     const handleDrawer = () => {
         setOpenDrawer(!openDrawer);
     };
+    
+    const ImageIcon = ({ src, alt }: { src: string, alt: string }) => <img src={src} alt={alt} style={{ width: '24px', height: '24px' }} />;
+
 
   return (
     <Box sx={{display: "flex", alignItems:"center", justifyContent:"space-between" , width: "100%"}}>
@@ -89,7 +92,9 @@ export const BurgerMenu = () => {
                     <HeaderLink name={"Release Plan"} href={"/release-plan"} icon={<CalendarMonth />} target="_self" onClick={handleDrawer}/>
                     <HeaderLink name={"Releases"} href={"/releases"} icon={<FileDownload />} target="_self" onClick={handleDrawer}/>
                 </HeaderDropdown>
+                
 
+                <HeaderMainLink name={"OSDF"} href={"https://osg-htc.org/services/osdf"} icon={<ImageIcon src={"/static/images/osg-logo.png"} alt="OSG Logo"/>} target="_blank" onClick={handleDrawer}/>
                 <HeaderMainLink name={"Documentation"} href={"https://docs.pelicanplatform.org/"} icon={<Description />} target="_blank" onClick={handleDrawer}/>
                 <HeaderMainLink name={"GitHub"} href={"https://github.com/PelicanPlatform"} icon={<GitHub />} target="_blank" onClick={handleDrawer}/>
             </List>

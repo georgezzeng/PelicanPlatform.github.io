@@ -90,6 +90,7 @@ export default function Home() {
                         </Grid>
                         <Grid item xs={12} md={6} sx={{display: "flex"}}>
                             <Box sx={{paddingBottom:"1rem", paddingTop:"1rem", display: "flex", flexDirection: "column"}}>
+                            <Box height={"0.5rem"} bgcolor={"#f4b627"} width={"3rem"} marginBottom={"1rem"}> </Box>
                                 <Typography variant={"h4"} sx={{paddingBottom: "1.5rem"}}>The Open Science Data Federation</Typography>
                                 <Box sx={{display: "flex", flexDirection: "column", flexGrow: "1"}}>
                                     <Box>
