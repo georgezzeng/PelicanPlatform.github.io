@@ -2,7 +2,7 @@
 
 import ExportedImage from "next-image-export-optimizer";
 import BurgerMenu from "@/components/BurgerMenu";
-import React, {useState, useEffect, useRef} from "react";
+import React, { useState, useEffect } from "react";
 import { Box, Menu, MenuItem } from "@mui/material"
 import styles from "../../app/page.module.css"
 import Link from "next/link";
@@ -126,6 +126,12 @@ export const Header = () => {
 
 				<Link href={"https://docs.pelicanplatform.org/"} style={{display: "flex"}} target="_blank">
 					<Typography id="docs-header" my={"auto"} pl={2} lineHeight={1} variant={"h6"}>Documentation</Typography>
+				</Link>
+
+				<Link href={"https://osg-htc.org/services/osdf"} style={{display: "flex"}} target="_blank">
+					<Typography id="osdf-header" my={"auto"} pl={2} lineHeight={1} variant={"h6"}>
+						OSDF
+					</Typography>
 				</Link>
 				<Menu
 						id="community-menu"
