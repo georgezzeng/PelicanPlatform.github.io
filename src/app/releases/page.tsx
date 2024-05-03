@@ -5,8 +5,6 @@ import { GitHubReleaseData } from "@/utils/github";
 import { organizeReleases } from "@/utils/releases";
 import MarkdownContainer from "@/components/MarkdownContainer";
 
-
-
 const Page = async () => {
     const organizedReleases = await organizeReleases();
     

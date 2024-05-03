@@ -2,7 +2,7 @@ import { CircularProgress, Container, Typography, Box, Divider, Accordion, Accor
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import React from "react";
 import MarkdownContainer from '@/components/MarkdownContainer';
-import { GitHubReleaseData } from "../../../utils/github"; // Assuming this is correctly defined
+import { GitHubReleaseData } from "../../../utils/github";
 
 export async function generateStaticParams() {
   const allAssetsApiUrl = `https://api.github.com/repos/PelicanPlatform/pelican/releases`;
