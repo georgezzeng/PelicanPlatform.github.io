@@ -1,9 +1,8 @@
-import { CircularProgress, Container, Typography, Box, Divider, Card, CardContent, Stack, Alert, ListItem, List, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
+import { CircularProgress, Container, Typography, Box, Divider, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import React from "react";
-import Markdown from "react-markdown";
-import rehypeRaw from 'rehype-raw';
-import { GitHubReleaseData } from "../../../utils/github"; // Assuming this is correctly defined
+import MarkdownContainer from '@/components/MarkdownContainer';
+import { GitHubReleaseData } from "../../../utils/github";
 
 export async function generateStaticParams() {
   const allAssetsApiUrl = `https://api.github.com/repos/PelicanPlatform/pelican/releases`;
@@ -51,25 +50,9 @@ const Page = async ({ params }: { params: { slug: string[] } }) => {
           height: "0.25rem",
         }} />
       </Box>
-      <Markdown 
-        rehypePlugins={[rehypeRaw]}
-        components={{
-          h1: ({node, children}) => <Typography variant="h4" pb={2}>{children}</Typography>,
-          h2: ({node, children}) => <Typography variant="h5" pb={2}>{children}</Typography>,
-          h3: ({node, children}) => <Typography variant="h6" pb={2}>{children}</Typography>,
-          h4: ({node, children}) => <Typography variant="subtitle1" pb={2}>{children}</Typography>,
-          h5: ({node, children}) => <Typography variant="subtitle2" pb={2}>{children}</Typography>,
-          h6: ({node, children}) => <Typography variant="caption">{children}</Typography>,
-          p: ({node, children}) => <Typography variant="body1">{children}</Typography>,
-          li: ({node, children}) => <ListItem disablePadding sx={{display:"inline"}}>{children}<br/></ListItem>,
-          ul: ({node, children}) => <List style={{paddingLeft: "1rem"}}>{children}</List>,
-          a: ({children, href}) => <Typography component="a" href={href} style={{ color: "#0885ff" }}>{children}</Typography>,
-          strong: ({node, children}) => <Box display="inline" fontWeight="bold">{children}</Box>,
-          text: ({ node, children }) => <Typography variant="body1" display="inline">{children}</Typography>,
-        }}
-      >
-        {specificRelease?.body || ""}
-      </Markdown>
+      <MarkdownContainer
+        content={specificRelease?.body || ""}
+      />
       <Box pt={4}>
         <Box pb={4}>
           {patchReleases.map((release: GitHubReleaseData) => (
@@ -84,18 +67,9 @@ const Page = async ({ params }: { params: { slug: string[] } }) => {
                 </Typography>
               </AccordionSummary>
               <AccordionDetails sx={{ mx: 3 }}>
-                <Markdown
-                  components={{
-                    p: ({node, children}) => <Typography variant="body1" paragraph>{children}</Typography>,
-                    li: ({node, children}) => <ListItem disablePadding sx={{display:"inline"}}>{children}<br/></ListItem>,
-                    a: ({children, href}) => <Typography component="a" href={href} style={{ color: "#0885ff" }}>{children}</Typography>,
-                    strong: ({node, children}) => <Box fontWeight="bold" display="inline">{children}</Box>,
-                    em: ({node, children}) => <Box sx={{ display: "inline", fontStyle:"italic"}}>{children}</Box>,
-                    ul: ({node, children}) => <List style={{paddingLeft: "1rem"}}>{children}</List>,
-                  }}
-                >
-                  {release.body}
-              </Markdown>
+                <MarkdownContainer
+                  content={release.body}
+                />
               </AccordionDetails>
             </Accordion>
           ))}
