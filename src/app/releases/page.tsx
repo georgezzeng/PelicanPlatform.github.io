@@ -1,10 +1,9 @@
 import React from "react";
-import Markdown from "react-markdown";
-import rehypeRaw from "rehype-raw";
-import { Box, Container, Divider, Typography, Accordion, AccordionSummary, AccordionDetails, List, ListItem } from "@mui/material";
+import { Box, Container, Divider, Typography, Accordion, AccordionSummary, AccordionDetails} from "@mui/material";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import { GitHubReleaseData } from "@/utils/github";
 import { organizeReleases } from "@/utils/releases";
+import MarkdownContainer from "@/components/MarkdownContainer";
 
 
 
@@ -30,26 +29,9 @@ const Page = async () => {
                                 </Typography>
                                 {organizedReleases[mainRelease].mainRelease.body !== "" ? (
                                     <Box pb={4}>
-                                        <Markdown
-                                            rehypePlugins={[rehypeRaw]}
-                                            components={{
-                                                h1: ({node, children}) => <Typography variant="h4" pb={2}>{children}</Typography>,
-                                                h2: ({node, children}) => <Typography variant="h5" pb={2}>{children}</Typography>,
-                                                h3: ({node, children}) => <Typography variant="h6" pb={2}>{children}</Typography>,
-                                                h4: ({node, children}) => <Typography variant="subtitle1" pb={2}>{children}</Typography>,
-                                                h5: ({node, children}) => <Typography variant="subtitle2" pb={2}>{children}</Typography>,
-                                                h6: ({node, children}) => <Typography variant="caption">{children}</Typography>,
-                                                p: ({node, children}) => <Typography variant="body1" paragraph>{children}</Typography>,
-                                                li: ({node, children}) => <ListItem disablePadding sx={{display:"inline"}}>{children}<br/></ListItem>,
-                                                ul: ({node, children}) => <List style={{paddingLeft: "1rem"}}>{children}</List>,
-                                                a: ({children, href}) => <Typography component="a" href={href} style={{ color: "#0885ff" }}>{children}</Typography>,
-                                                strong: ({node, children}) => <Box component="span" display="inline" fontWeight="bold">{children}</Box>,
-                                                text: ({ node, children }) => <Typography variant="body1" display="inline">{children}</Typography>,
-                                                div: ({node, children}) => <Box>{children}</Box>,
-                                            }}
-                                        >
-                                            {organizedReleases[mainRelease].mainRelease.body}
-                                        </Markdown>
+                                        <MarkdownContainer
+                                            content={organizedReleases[mainRelease].mainRelease.body}
+                                        />
                                     </Box>
                                 ) : null}
                                 {organizedReleases[mainRelease].minorReleases.map((release: GitHubReleaseData) => (
@@ -64,26 +46,9 @@ const Page = async () => {
                                             </Typography>
                                         </AccordionSummary>
                                         <AccordionDetails>
-                                            <Markdown
-                                                rehypePlugins={[rehypeRaw]}
-                                                components={{
-                                                    h1: ({node, children}) => <Typography variant="body1" fontWeight="strong" >{children}</Typography>,
-                                                    h2: ({node, children}) => <Typography variant="body1" fontWeight="strong">{children}</Typography>,
-                                                    h3: ({node, children}) => <Typography variant="body1" fontWeight="strong">{children}</Typography>,
-                                                    h4: ({node, children}) => <Typography variant="body1" fontWeight="strong">{children}</Typography>,
-                                                    h5: ({node, children}) => <Typography variant="body1" fontWeight="strong">{children}</Typography>,
-                                                    h6: ({node, children}) => <Typography variant="body1" fontWeight="strong">{children}</Typography>,
-                                                    p: ({node, children}) => <Typography variant="body1" paragraph>{children}</Typography>,
-                                                    li: ({node, children}) => <ListItem disablePadding sx={{display:"inline"}}>{children}<br/></ListItem>,
-                                                    a: ({children, href}) => <Typography component="a" href={href} style={{ color: "#0885ff" }}>{children}</Typography>,
-                                                    strong: ({node, children}) => <Box component="span" fontWeight="bold" display="inline">{children}</Box>,
-                                                    em: ({node, children}) => <Box component="span" sx={{ display: "inline", fontStyle:"italic"}}>{children}</Box>,
-                                                    ul: ({node, children}) => <List style={{paddingLeft: "1rem"}}>{children}</List>,
-                                                    div: ({node, children}) => <Box>{children}</Box>,
-                                                  }}
-                                            >
-                                                {release.body}
-                                            </Markdown>
+                                            <MarkdownContainer
+                                                content={release.body}
+                                            />
                                         </AccordionDetails>
                                     </Accordion>
                                 ))}
