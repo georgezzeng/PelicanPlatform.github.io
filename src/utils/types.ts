@@ -9,4 +9,5 @@ export interface Member {
     };
     image: string;
     organizations: string[];
+    status: string;
   }

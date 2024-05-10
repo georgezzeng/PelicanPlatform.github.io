@@ -1,4 +1,4 @@
-import {Box, Container, Grid} from '@mui/material';
+import {Box, Container, Grid, Typography, Divider} from '@mui/material';
 import {LeaderCard, StaffCard} from "./cards";
 import React from 'react';
 import { loadStaffData } from '../../utils/loadStaffData';
@@ -7,11 +7,13 @@ import { loadStaffData } from '../../utils/loadStaffData';
 export default function Page() {
 	const team = loadStaffData();
 	const promoted = 
-		team.filter((member) => ( member.promoted ?? false ) && member.organizations.includes("pelican") )
+		team.filter((member) => ( member.promoted ?? false ) && member.organizations.includes("pelican") && member.status !== "Past")
 			.sort((a, b) => (a.pelican?.weight || 0) - (b.pelican?.weight || 0));
 	const staff = 
-		team.filter((member) => (!member.promoted ?? false) && member.organizations.includes("pelican") )
+		team.filter((member) => (!member.promoted ?? false) && member.organizations.includes("pelican") && member.status !== "Past")
 			.sort((a, b) => (a.pelican?.weight || 0) - (b.pelican?.weight || 0));
+	const pastStaff = 
+		team.filter((member) => member.organizations.includes("pelican") && member.status === "Past");
 
 	return (
 		<Box pt={6}>
@@ -35,6 +37,21 @@ export default function Page() {
 						<StaffCard key={member.name} {...member} />
 					))}
 				</Grid>
+				{pastStaff.length > 0 && (
+					<>
+						<Box pt={6} pb={4}>
+						<Divider sx={{ bgcolor: "primary.main", height: "0.3rem", width:"3rem" }} />
+							<Typography variant="h4" component="h2">
+								Previous Staff
+							</Typography>
+						</Box>
+						<Grid container justifyContent={"center"}>
+							{pastStaff.map((member) => (
+								<StaffCard key={member.name} {...member} />
+							))}
+						</Grid>
+					</>
+				)}
 			</Container>
 		</Box>
 	);
