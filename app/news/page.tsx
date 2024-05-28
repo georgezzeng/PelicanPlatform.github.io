@@ -1,6 +1,6 @@
 import {Box, Typography, Grid, Container} from "@mui/material";
-import {HeroCard, ArticleCard} from "@/components/Article";
-import {getArticles, filterArticles} from "@/utils/articles";
+import {HeroCard, ArticleCard} from "../../components/Article";
+import {getArticles, filterArticles} from "../../utils/articles";
 
 
 async function getUserStories(){

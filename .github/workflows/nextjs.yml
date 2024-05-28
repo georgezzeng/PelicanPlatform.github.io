@@ -59,7 +59,7 @@ jobs:
         with:
           node-version: "16"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
-          cache-dependency-path: ./src/yarn.lock
+          cache-dependency-path: ./yarn.lock
       - name: Setup Pages
         uses: actions/configure-pages@v3
         with:
@@ -79,10 +79,8 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
       - name: Install dependencies
-        working-directory: ./src
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Build with Next.js
-        working-directory: ./src
         run: |
           yarn run export
           find ./out | sed -e "s/[^-][^\/]*\//  |/g" -e "s/|\([^ ]\)/|-\1/"
@@ -91,4 +89,4 @@ jobs:
         if: ${{ github.event_name == 'push' }}
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: ./src/out # The folder the action should deploy.
+          folder: ./out # The folder the action should deploy.
