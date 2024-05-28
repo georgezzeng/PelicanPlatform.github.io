@@ -3,8 +3,13 @@
 name: Deploy Next.js site to Pages
 
 on:
+  # Run every night
+  schedule:
+      - cron: "0 0 * * *"
+
   pull_request:
     branches: ["main"]
+
   # Runs on pushes targeting the default branch
   push:
     branches: ["main"]
