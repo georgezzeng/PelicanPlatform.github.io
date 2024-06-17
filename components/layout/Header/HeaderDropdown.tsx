@@ -1,18 +1,17 @@
 'use client'
 import React, { ReactNode, useState } from "react";
 import {Typography, ListItemButton, ListItemIcon, Collapse} from "@mui/material";
-import Link from "next/link";
+import Link, {LinkProps} from "next/link";
 import { ExpandLess, ExpandMore} from "@mui/icons-material";
 
-interface HeaderLinkProps {
-    name: string
-    href: string
+interface HeaderLinkProps extends LinkProps {
+    value: string
     icon: ReactNode
-    target: string
+    target?: string
     onClick: () => void
 }
   
-export const HeaderLink = ({ name, href, icon, target, onClick }: HeaderLinkProps) => {
+export const HeaderLink = ({ value, href, icon, target, onClick }: HeaderLinkProps) => {
     return (
         <ListItemButton
         onClick={onClick}>
@@ -21,30 +20,30 @@ export const HeaderLink = ({ name, href, icon, target, onClick }: HeaderLinkProp
             </ListItemIcon>
             <Typography variant="h6">
                 <Link href={href} target={target}>
-                    {name}
+                    {value}
                 </Link>
             </Typography>
         </ListItemButton>
     )
 }
 
-export const HeaderMainLink = ({ name, href, icon, target, onClick }: HeaderLinkProps) => {
+export const HeaderMainLink = ({ value, href, icon, target, onClick }: HeaderLinkProps) => {
     return (
         <ListItemButton
         onClick={onClick}>
             <ListItemIcon sx={{ marginRight: "-0.8em", fontSize: "2em" }}>
                 {icon}
             </ListItemIcon>
-            <Typography variant="h4">
+            <Typography variant="h5">
                 <Link href={href} target={target}>
-                    {name}
+                    {value}
             </Link>
             </Typography>
         </ListItemButton>
     )
 }
 
-export const HeaderDropdown = ({ name, children, icon }: { name: string, children: ReactNode, icon: ReactNode}) => {
+export const HeaderDropdown = ({ value, children, icon }: { value: string, children: ReactNode, icon: ReactNode}) => {
     const [openState, setOpenState] = useState(false);
     const handleClick = () => {
         setOpenState(!openState);
@@ -56,8 +55,8 @@ export const HeaderDropdown = ({ name, children, icon }: { name: string, childre
                 <ListItemIcon sx={{ marginRight: "-0.8em", fontSize: "2em"  }}>
                     {icon}
                 </ListItemIcon>
-                <Typography variant="h4">
-                    {name}
+                <Typography variant="h5">
+                    {value}
                 </Typography>
                 {openState ? <ExpandLess sx={{ marginLeft: "1em" }} /> : <ExpandMore sx={{ marginLeft: "0.5em" }} />}
             </ListItemButton>
