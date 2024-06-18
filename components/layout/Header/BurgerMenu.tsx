@@ -68,9 +68,10 @@ export const BurgerMenu = ({menuItems} : {menuItems: (Omit<HeaderMenuProps, "set
                   if ('menuItems' in item) {
                     // This is a dropdown item
                     return (
-                        <HeaderDropdown value={item.value} icon={item.icon}>
+                        <HeaderDropdown key={item.value} value={item.value} icon={item.icon}>
                           {item.menuItems.map((subItem) => (
                               <HeaderLink
+                                  key={item.value}
                                   value={subItem.value}
                                   href={subItem.href}
                                   icon={subItem.icon}
@@ -84,6 +85,7 @@ export const BurgerMenu = ({menuItems} : {menuItems: (Omit<HeaderMenuProps, "set
                     // This is a main link item
                     return (
                         <HeaderMainLink
+                            key={item.value}
                             value={item.value}
                             href={item.href}
                             icon={item.icon}

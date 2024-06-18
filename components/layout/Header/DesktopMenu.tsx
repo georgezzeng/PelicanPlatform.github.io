@@ -17,6 +17,7 @@ export const DesktopMenu = ({menuItems} : {menuItems: (Omit<HeaderMenuProps, "se
 				<Box display={"flex"} mb={.5}>
 					{menuItems.filter(x => "type" in x ? x?.type != "icon" : true).map((item) => (
 							<HeaderItem
+									key={item.value}
 									{...item}
 									anchorEl={anchorEl}
 									setAnchor={(element) => {
@@ -36,7 +37,7 @@ export const DesktopMenu = ({menuItems} : {menuItems: (Omit<HeaderMenuProps, "se
 				<Box marginLeft={"auto"}>
 					<Grid container spacing={1}>
 						{menuItems.filter(x => "type" in x ? x?.type == "icon" : false).map((item) => (
-								<Grid item>
+								<Grid key={item.value} item>
 									<HeaderIconLink
 											{...item as HeaderLinkItem}
 									/>
@@ -86,7 +87,7 @@ const HeaderMenu = ({icon, value, anchorEl, setAnchor, menuItems}: HeaderMenuPro
 				</Link>
 				<Menu anchorEl={anchorEl} open={open} onClose={() => setAnchor(null)}>
 					{menuItems.map((item) => (
-							<Link {...item}>
+							<Link key={item.value} {...item}>
 								<MenuItem onClick={e => setAnchor(anchorRef.current)}>{item.value}</MenuItem>
 							</Link>
 					))}
