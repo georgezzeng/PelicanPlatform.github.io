@@ -8,7 +8,7 @@ export async function generateStaticParams() {
   const allAssetsApiUrl = `https://api.github.com/repos/PelicanPlatform/pelican/releases`;
   const releasesData = await fetch(allAssetsApiUrl).then(response => response.json());
   const slugs = releasesData.map((release: GitHubReleaseData) => release.tag_name);
-  return slugs.map((slug: string) => ({ slug: slug.split('.') }))
+  return slugs.map((slug: string) => ({ slug: [slug] }))
 }
 
 async function getPageData(slug: string[]) {
