@@ -1,4 +1,3 @@
-'use client'
 
 import ExportedImage from "next-image-export-optimizer";
 import {BackgroundPage} from "@/components/Background";
@@ -9,31 +8,22 @@ import pelicanDiagram from "../public/static/images/pelican-concept-map_Realisti
 import {ArticleCard} from "@/components/Article";
 import {getArticles, filterArticles, BackendArticle} from "@/utils/articles";
 import Releases from "../components/Releases";
-import {useEffect, useState} from "react";
 
 async function getUserStories(){
 	const articles = await getArticles("CHTC", "Articles", "main")
 	return filterArticles(articles, "pelican", "user")
 }
+
 async function getNews(){
 	const articles = await getArticles("CHTC", "Articles", "main")
 	return filterArticles(articles, "pelican", "news")
 }
 
-export default function Home() {
-    const [userStories, setUserStories] = useState<BackendArticle[]>([]);
-    const [news, setNews] = useState<BackendArticle[]>([]);
+export default async function Home() {
 
-    useEffect(() => {
-        async function fetchData() {
-            const stories = await getUserStories();
-            const newsData = await getNews();
-            setUserStories(stories);
-            setNews(newsData);
-        }
+    const userStories = await getUserStories();
+    const news = await getNews();
 
-        fetchData();
-    }, []);
     return (
         <Box>
             <BackgroundPage image={hero}/>

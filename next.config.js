@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    output: "export",
+    output: process.env.NODE_ENV === "development" ? undefined : "export",
     images: {
         loader: "custom",
         imageSizes: [16, 96, 384],
