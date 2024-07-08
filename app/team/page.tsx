@@ -1,16 +1,17 @@
 import {Box, Container, Grid, Typography, Divider} from '@mui/material';
 import {LeaderCard, StaffCard} from "./cards";
 import React from 'react';
-import { loadStaffData } from '../../utils/loadStaffData';
+import {getStaff} from "../../utils/staff";
 
   
-export default function Page() {
-	const team = loadStaffData();
+export default async function Page() {
+	const team = await getStaff("pelican");
+
 	const promoted = 
-		team.filter((member) => ( member.promoted ?? false ) && member.organizations.includes("pelican") && member.status !== "Past")
+		team.filter((member) => ( member?.promoted == true ) && member.organizations.includes("pelican") && member.status !== "Past")
 			.sort((a, b) => (a.pelican?.weight || 0) - (b.pelican?.weight || 0));
 	const staff = 
-		team.filter((member) => (!member.promoted ?? false) && member.organizations.includes("pelican") && member.status !== "Past")
+		team.filter((member) => member.organizations.includes("pelican") && member.status !== "Past")
 			.sort((a, b) => (a.pelican?.weight || 0) - (b.pelican?.weight || 0));
 	const pastStaff = 
 		team.filter((member) => member.organizations.includes("pelican") && member.status === "Past");

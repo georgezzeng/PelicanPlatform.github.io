@@ -1,9 +1,9 @@
 import ExportedImage from "next-image-export-optimizer";
 import {Box, Grid, Typography, Paper} from '@mui/material';
 import React from 'react';
-import { Member } from '../../utils/types';
+import {Staff} from "@/utils/staff";
 
-export function LeaderCard({name, title, image, institution, pelican}: Member) {
+export function LeaderCard({name, title, image, institution}: Staff) {
 	return (
 		<Grid container spacing={2} justifyContent={"center"} mb={2}>
 			<Grid item xs={7} sm={6} md={5}>
@@ -14,7 +14,7 @@ export function LeaderCard({name, title, image, institution, pelican}: Member) {
 				}}>
 					<Box sx={{position: "relative", aspectRatio: 1}}>
 						<ExportedImage
-							src={`/staff-list/${image}`}
+							src={image}
 							alt={name}
 							fill={true}
 							style={{
@@ -29,7 +29,7 @@ export function LeaderCard({name, title, image, institution, pelican}: Member) {
 			<Grid item sx={{pl: 1, display: "flex", flexDirection:"column"}}>
 				<Box sx={{m: "auto"}}>
 					<Typography variant={"h5"}  color={"primary.dark"}>{name}</Typography>
-					<Typography variant={"body1"}>{pelican?.title || title}</Typography>
+					<Typography variant={"body1"}>{title}</Typography>
 					<Typography variant={"body1"}>{institution}</Typography>
 				</Box>
 			</Grid>
@@ -37,7 +37,7 @@ export function LeaderCard({name, title, image, institution, pelican}: Member) {
 	)
 }
 
-export function StaffCard({name, title, image, institution, pelican}: Member) {
+export function StaffCard({name, title, image, institution}: Staff) {
 	return (
 			<Box sx={{
 				borderRadius: "1rem",
@@ -53,7 +53,7 @@ export function StaffCard({name, title, image, institution, pelican}: Member) {
 					bgcolor: "primary.light",
 				}}>
 					<ExportedImage
-							src={`../staff-list/${image}`}
+							src={image}
 							alt={name}
 							height={150}
 							width={150}
@@ -67,7 +67,7 @@ export function StaffCard({name, title, image, institution, pelican}: Member) {
 				<Box sx={{pl: 1, display: "flex", flexDirection:"column"}}>
 					<Box sx={{m: "auto"}}>
 						<Typography variant={"h5"} color={"primary.dark"}>{name}</Typography>
-						<Typography variant={"subtitle1"}>{pelican?.title || title}</Typography>
+						<Typography variant={"subtitle1"}>{title}</Typography>
 						<Typography variant={"subtitle1"} lineHeight={1.4}>{institution}</Typography>
 					</Box>
 				</Box>

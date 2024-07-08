@@ -17,7 +17,6 @@ const getReleases = async () => {
   } catch (error) {
     console.error('Error fetching releases:', error);
   }
-
 }
 
 const Releases = async () => {
