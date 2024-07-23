@@ -1,7 +1,7 @@
 
 import ExportedImage from "next-image-export-optimizer";
 import {BackgroundPage} from "@/components/Background";
-import {Box, Container, Grid, Typography, Link, Divider} from '@mui/material';
+import {Box, Container, Grid, Typography, Link, Divider, Button} from '@mui/material';
 import hero from '../public/static/images/pelican-hero.png'
 import ArrowRight from "@/components/svg/arrowright";
 import pelicanDiagram from "../public/static/images/pelican-concept-map_Realistic.png"
@@ -26,6 +26,23 @@ export default async function Home() {
 
     return (
         <Box>
+            <Box>
+                { Date.now() < Date.parse("2024-08-01") && (
+                <Container maxWidth={"xl"} sx={{
+                    backgroundColor:"primary.light",
+                    p:1
+                    
+                }}>
+                    <Typography component={"h6"} sx={{display: "inline", pt: 1}}>CHTC is hiring! View the new Research Cyberinfrastructure Specialist position on the jobs page and apply by August 1st.</Typography>
+                    <Button 
+                    variant="contained"
+                    href="https://chtc.cs.wisc.edu/jobs.html#full-time-positions"
+                    sx={{
+                        ml:1,
+                        }}>View Job Posting</Button>
+                </Container>
+                )}
+            </Box>
             <BackgroundPage image={hero}/>
             <Container maxWidth={"xl"}>
                 <Box sx={{paddingTop: "4rem", paddingBottom: "10rem"}}>
