@@ -27,13 +27,13 @@ export default async function Home() {
     return (
         <Box>
             <Box>
-                { Date.now() < Date.parse("2024-08-01") && (
+                { Date.now() < Date.parse("2024-08-15") && (
                 <Container maxWidth={"xl"} sx={{
                     backgroundColor:"primary.light",
                     p:1
                     
                 }}>
-                    <Typography component={"h6"} sx={{display: "inline", pt: 1}}>CHTC is hiring! View the new Research Cyberinfrastructure Specialist position on the jobs page and apply by August 1st.</Typography>
+                    <Typography component={"h6"} sx={{display: "inline", pt: 1}}>CHTC is hiring! View the new Research Cyberinfrastructure Specialist position on the jobs page and apply by August 15th.</Typography>
                     <Button 
                     variant="contained"
                     href="https://chtc.cs.wisc.edu/jobs.html#full-time-positions"
