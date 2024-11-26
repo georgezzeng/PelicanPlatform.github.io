@@ -18,7 +18,7 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
                 <Grid container spacing={1}>
                     {presentations.map(presentation =>
                         <Grid key={presentation.slug.join("-")} item xs={12} md={6} lg={4}>
-                            <PresentationCard href={`/news/${presentation.slug.join("/")}`} presentation={presentation}/>
+                            <PresentationCard href={`/presentations/${presentation.slug.join("/")}`} presentation={presentation}/>
                         </Grid>
                     )}
                 </Grid>
