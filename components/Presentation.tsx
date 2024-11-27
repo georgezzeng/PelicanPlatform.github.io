@@ -21,11 +21,8 @@ interface PresentationProps {
     description: string,
     authors: string,
     published_date: string,
-    link: string,
-    image: {
-        path: string;
-        alt: string;
-    }
+    thumb: string,
+    path: string,
 }
 
 export const PresentationCard = ({ href, presentation }: PresentationCardProps) => {
@@ -96,12 +93,12 @@ export const Presentation = ({
                                  description,
                                  authors,
                                  published_date,
-                                 link,
-                                 image,}: PresentationProps) => {
+                                 path,
+                                 thumb,
+                             }: PresentationProps) => {
     return (
         <Container maxWidth="md">
             <Box pt={6}>
-                {/* Title */}
                 <Box textAlign="center" pb={2}>
                     <Typography variant="h3">
                         <Balancer>{title}</Balancer>
@@ -115,41 +112,49 @@ export const Presentation = ({
                     <Box pt={1}>
                         <Typography variant="h5">By {authors}</Typography>
                         <Typography variant="h5">
-                            Published on {published_date}
+                            Published on {new Date(published_date).toLocaleDateString()}
                         </Typography>
                     </Box>
                 </Box>
 
-                {/* Image */}
-                <Box pt={4}>
-                    <img
+                <Box
+                    mt={4}
+                    sx={{
+                        position: "relative",
+                        overflow: "hidden",
+                        paddingTop: "56.25%", // 16:9 aspect ratio
+                    }}
+                >
+                    <iframe
+                        src={`${path}/embed`}
+                        title="Interactive Presentation Viewer"
                         style={{
-                            maxWidth: "100%",
-                            height: "auto",
-                            borderRadius: "8px",
+                            position: "absolute",
+                            top: 0,
+                            left: 0,
+                            width: "100%",
+                            height: "100%",
+                            border: "none",
                         }}
-                        src={image.path}
-                        alt={image.alt}
-                    />
+                        allowFullScreen
+                    ></iframe>
                 </Box>
 
-                {/* Description */}
                 <Box pt={4}>
                     <Typography variant="body1" sx={{ lineHeight: 1.6 }}>
                         {description}
                     </Typography>
                 </Box>
 
-                {/* External Link */}
                 <Box pt={4}>
                     <Typography variant="h6">
                         <a
-                            href={link}
+                            href={path}
                             target="_blank"
                             rel="noopener noreferrer"
                             style={{ color: "#0885ff" }}
                         >
-                            View Full Presentation
+                            View on Figshare
                         </a>
                     </Typography>
                 </Box>
