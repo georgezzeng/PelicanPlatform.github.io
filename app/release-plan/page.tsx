@@ -2,9 +2,9 @@ import { Box, Container, Typography, Divider, Paper, Table, TableCell, TableRow,
 
 export default function Page() {
     const RELEASE_SCHEDULE = {
-        release_name: "7.11.0",
-        pre_release_date: "2024-10-29",
-        release_date: "2024-11-05",
+        release_name: "7.12.0",
+        pre_release_date: "2024-12-17",
+        release_date: "2024-12-24",
     }
     
     return( 
