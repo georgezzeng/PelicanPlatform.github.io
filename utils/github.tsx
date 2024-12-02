@@ -43,3 +43,12 @@ export interface GitHubReleaseData {
   export interface ReleasePageProps {
 	releaseData: GitHubReleaseData;
   }
+
+export interface GithubMilestoneData {
+	title: string;
+	state: "open" | "closed";
+	created_at: string;
+	updated_at: string;
+	closed_at: string;
+	due_on: string;
+}
