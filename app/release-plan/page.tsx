@@ -75,11 +75,12 @@ export default async function Page() {
 
 async function getCurrentMilestone(): Promise<GithubMilestoneData> {
     const apiUrl =
-        "https://api.github.com/repos/PelicanPlatform/pelican/milestones?direction=desc";
+        "https://api.github.com/repos/PelicanPlatform/pelican/milestones?direction=asc";
     const response = await fetch(apiUrl);
     if (!response.ok) throw new Error("Failed to fetch milestones");
 
     const milestones: GithubMilestoneData[] = await response.json();
+
     // simple type sanity checks, not exhaustive
     if (!Array.isArray(milestones)) throw new Error("Invalid milestone data");
     if (milestones.length === 0) throw new Error("No milestones found");
@@ -91,11 +92,12 @@ async function getCurrentMilestone(): Promise<GithubMilestoneData> {
     );
 
     if (!currentMilestone) {
-        // if there is no open milestone, default to the first one just to gracefully handle the case
+        // if there is no open milestone, default to the last closed one just to gracefully handle the case
         console.warn(
-            "No open milestone found, defaulting to the first (closed) one"
+            "No open milestone found, defaulting to the last (closed) one"
         );
-        return milestones[0];
+
+        return milestones.findLast((milestone) => milestone.state === "closed") ?? milestones[0];
     } else {
         return currentMilestone;
     }
