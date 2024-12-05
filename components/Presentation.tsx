@@ -4,28 +4,26 @@ import Balancer from "react-wrap-balancer";
 
 interface PresentationCardProps {
     href: string;
-    presentation: {
-        title: string;
-        excerpt: string;
-        authors: string;
-        published_date: string;
-        image: {
-            path: string;
-            alt: string;
-        };
+    presentation: PresentationProps;
+}
+
+export interface PresentationProps {
+    title: string;
+    description: string;
+    authors: string;
+    published_date: string;
+    path: string;
+    thumb: string;
+    excerpt: string;
+    image: {
+        path: string;
+        alt: string;
     };
 }
 
-interface PresentationProps {
-    title: string,
-    description: string,
-    authors: string,
-    published_date: string,
-    thumb: string,
-    path: string,
-}
 
 export const PresentationCard = ({ href, presentation }: PresentationCardProps) => {
+
     const cardStyle = {
         transition: "box-shadow 0.2s",
         boxShadow: "grey 1px 1px 3px",
@@ -47,7 +45,7 @@ export const PresentationCard = ({ href, presentation }: PresentationCardProps) 
                             height: "200px",
                             objectFit: "cover",
                         }}
-                        src={presentation.image.path}
+                        src={presentation.thumb}
                         alt={presentation.image.alt}
                     />
                 </Box>
@@ -58,29 +56,29 @@ export const PresentationCard = ({ href, presentation }: PresentationCardProps) 
                     >
                         {presentation.title}
                     </Typography>
+                    {/*<Typography*/}
+                    {/*    variant="body2"*/}
+                    {/*    color="textSecondary"*/}
+                    {/*    sx={{ marginBottom: 2 }}*/}
+                    {/*>*/}
+                    {/*    By {presentation.authors}*/}
+                    {/*</Typography>*/}
                     <Typography
                         variant="body2"
                         color="textSecondary"
                         sx={{ marginBottom: 2 }}
                     >
-                        By {presentation.authors}
+                        Posted on {new Date(presentation.published_date).toLocaleDateString()}
                     </Typography>
-                    <Typography
-                        variant="body2"
-                        color="textSecondary"
-                        sx={{ marginBottom: 2 }}
-                    >
-                        {presentation.published_date}
-                    </Typography>
-                    <Typography
-                        variant="body2"
-                        color="textSecondary"
-                        sx={{
-                            marginBottom: "auto",
-                        }}
-                    >
-                        {presentation.excerpt}
-                    </Typography>
+                    {/*<Typography*/}
+                    {/*    variant="body2"*/}
+                    {/*    color="textSecondary"*/}
+                    {/*    sx={{*/}
+                    {/*        marginBottom: "auto",*/}
+                    {/*    }}*/}
+                    {/*>*/}
+                    {/*    {presentation.excerpt}*/}
+                    {/*</Typography>*/}
                 </Box>
             </Link>
         </Box>
@@ -110,7 +108,7 @@ export const Presentation = ({
                         mt={2}
                     />
                     <Box pt={1}>
-                        <Typography variant="h5">By {authors}</Typography>
+                        {/*<Typography variant="h5">By {authors}</Typography>*/}
                         <Typography variant="h5">
                             Published on {new Date(published_date).toLocaleDateString()}
                         </Typography>
@@ -140,14 +138,14 @@ export const Presentation = ({
                     ></iframe>
                 </Box>
 
-                <Box pt={4}>
-                    <Typography variant="body1" sx={{ lineHeight: 1.6 }}>
-                        {description}
-                    </Typography>
-                </Box>
+                {/*<Box pt={4}>*/}
+                {/*    <Typography variant="body1" sx={{ lineHeight: 1.6 }}>*/}
+                {/*        {description}*/}
+                {/*    </Typography>*/}
+                {/*</Box>*/}
 
-                <Box pt={4}>
-                    <Typography variant="h6">
+                <Box pt={4} display="flex" justifyContent="center">
+                    <Typography variant="h6" >
                         <a
                             href={path}
                             target="_blank"

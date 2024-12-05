@@ -7,7 +7,7 @@ import {PresentationCard} from "@/components/Presentation";
 export default async function Page({ params }: { params: { slug: string[] } }) {
     const presentations = await getPresentations();
 
-    console.log(" presentations", presentations)
+    // console.log(" presentations", presentations)
     return (
         <>
             <HeroCard href={`/user-stories/${presentations[0].slug.join("/")}`} article={presentations[0]}/>

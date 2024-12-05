@@ -31,6 +31,9 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
             published_date={presentation.published_date}
             path={presentation.path} // Pass the public HTML URL
             thumb={presentation.thumb}
-        />
+            excerpt={presentation.excerpt} image={{
+            path: presentation.image.path,
+            alt: presentation.image.alt
+        }}/>
     );
 }
