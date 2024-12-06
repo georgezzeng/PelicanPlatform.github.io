@@ -30,12 +30,12 @@ export interface PresentationProps {
 }
 
 
-export const PresentationCard = ({ href, presentation }: PresentationCardProps) => {
+export const PresentationCard = ({href, presentation}: PresentationCardProps) => {
 
     const cardStyle = {
         transition: "box-shadow 0.2s",
         boxShadow: "grey 1px 1px 3px",
-        "&:hover": { boxShadow: "grey 1px 1px 6px" },
+        "&:hover": {boxShadow: "grey 1px 1px 6px"},
         borderRadius: 4,
         overflow: "hidden",
         display: "flex",
@@ -59,7 +59,7 @@ export const PresentationCard = ({ href, presentation }: PresentationCardProps) 
                 <Box p={2} display="flex" flexDirection="column" flexGrow={1}>
                     <Typography
                         variant="h6"
-                        sx={{ fontWeight: "bold", marginBottom: 1 }}
+                        sx={{fontWeight: "bold", marginBottom: 1}}
                     >
                         {presentation.title}
                     </Typography>
@@ -73,7 +73,7 @@ export const PresentationCard = ({ href, presentation }: PresentationCardProps) 
                     <Typography
                         variant="body2"
                         color="textSecondary"
-                        sx={{ marginBottom: 2 }}
+                        sx={{marginBottom: 2}}
                     >
                         Posted on {new Date(presentation.published_date).toLocaleDateString()}
                     </Typography>
@@ -94,10 +94,14 @@ export const PresentationCard = ({ href, presentation }: PresentationCardProps) 
 
 
 export const Presentation = ({
-                                id,
+                                 id,
                                  title,
                                  published_date,
                                  path,
+                                 authors,
+                                 description,
+                                 download_url,
+                                 thumb,
                              }: PresentationProps) => {
     return (
         <Container maxWidth="md">
@@ -112,10 +116,11 @@ export const Presentation = ({
                         bgcolor="primary.main"
                         mt={2}
                     />
-                    <Box pt={1}>
+                    <Box pt={1} display={"flex"} justifyContent={"space-between"}>
                         {/*<Typography variant="h5">By {authors}</Typography>*/}
+                        <Typography variant={"h5"}>{authors.map(author => author.full_name).join(", ")}</Typography>
                         <Typography variant="h5">
-                            Published on {new Date(published_date).toLocaleDateString()}
+                            {new Date(published_date).toLocaleDateString()}
                         </Typography>
                     </Box>
                 </Box>
@@ -125,7 +130,7 @@ export const Presentation = ({
                     sx={{
                         position: "relative",
                         overflow: "hidden",
-                        paddingTop: "56.25%", // 16:9 aspect ratio
+                        paddingTop: "56.25%",
                     }}
                 >
                     <iframe
@@ -162,7 +167,7 @@ export const Presentation = ({
                     <Button
                         variant="contained"
                         color="primary"
-                        startIcon={<OpenInNewIcon />}
+                        startIcon={<OpenInNewIcon/>}
                         href={path}
                         target="_blank"
                         rel="noopener noreferrer"

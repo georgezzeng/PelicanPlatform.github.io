@@ -11,7 +11,7 @@ import {BackendPresentation} from "@/utils/presentations";
 
 interface CardProps {
 	href: string;
-	article: BackendArticle | BackendPresentation;
+	article: BackendArticle;
 }
 
 export const HeroCard = ({href, article} : CardProps) => {
