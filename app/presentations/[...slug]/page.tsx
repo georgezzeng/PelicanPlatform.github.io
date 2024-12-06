@@ -1,8 +1,8 @@
-import { Presentation } from "@/components/Presentation"; // Adjust the path as needed
-import {getPresentation, getPresentations} from "@/utils/presentations"; // Ensure path is correct
+import {Presentation} from "@/components/Presentation";
+import {getPresentation, getPresentations} from "@/utils/presentations";
 import { Box, Container, Typography } from "@mui/material";
 
-export interface Presentation {
+export interface PresentationProps {
     id: number;
     title: string;
     description: string;
@@ -63,8 +63,7 @@ export interface Presentation {
     };
 }
 
-
-async function getPresentationBySlug(slug: string[]): Promise<Presentation | null> {
+async function getPresentationBySlug(slug: string[]): Promise<PresentationProps | null> {
     try {
         const presentations = await getPresentations();
         const matchedPresentation = presentations.find(
