@@ -93,7 +93,7 @@ export async function getPresentations(): Promise<BackendPresentation[]> {
         }
 
         const data = await response.json();
-        console.log("Presentations fetched from Figshare:", data);
+        // console.log("Presentations fetched from Figshare:", data);
 
         return(data.map((presentation: Presentation) => ({
                 ...presentation,
@@ -119,7 +119,7 @@ export async function getPresentation(articleId: number): Promise<Presentation> 
         }
 
         const data = await response.json()
-        console.log("Presentation fetched from Figshare:", data)
+        // console.log("Presentation fetched from Figshare:", data)
         return data;
     } catch (error){
         console.error("Error fetching presentation from Figshare:", error)
