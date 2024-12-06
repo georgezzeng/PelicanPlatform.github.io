@@ -13,7 +13,16 @@ export interface PresentationProps {
     id: number;
     title: string;
     description: string;
-    authors: string;
+    authors:
+        {
+            id: number;
+            full_name: string;
+            first_name: string;
+            last_name: string;
+            is_active: boolean;
+            url_name: string;
+            orcid_id: string | null;
+        }[];
     published_date: string;
     download_url: string;
     path: string;
@@ -87,12 +96,8 @@ export const PresentationCard = ({ href, presentation }: PresentationCardProps) 
 export const Presentation = ({
                                 id,
                                  title,
-                                 description,
-                                 authors,
                                  published_date,
-                                 download_url,
                                  path,
-                                 thumb,
                              }: PresentationProps) => {
     return (
         <Container maxWidth="md">

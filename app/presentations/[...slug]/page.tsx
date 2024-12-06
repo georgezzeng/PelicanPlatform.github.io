@@ -2,13 +2,15 @@ import {Presentation} from "@/components/Presentation";
 import {getPresentation, getPresentations} from "@/utils/presentations";
 import { Box, Container, Typography } from "@mui/material";
 
-export interface PresentationProps {
+interface PresentationProps {
     id: number;
     title: string;
     description: string;
     authors: {
         id: number;
         full_name: string;
+        first_name: string;
+        last_name: string;
         is_active: boolean;
         url_name: string;
         orcid_id: string | null;
@@ -81,6 +83,7 @@ async function getPresentationBySlug(slug: string[]): Promise<PresentationProps 
     }
 }
 
+
 export default async function Page({ params }: { params: { slug: string[] } }) {
     const presentation = await getPresentationBySlug(params.slug);
 
@@ -100,7 +103,7 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
             id={presentation.id}
             title={presentation.title}
             description={presentation.description}
-            authors={presentation.authors.map((author) => author.full_name).join(", ")}
+            authors={presentation.authors}
             published_date={presentation.published_date}
             download_url={presentation.files[0].download_url}
             path={presentation.figshare_url}

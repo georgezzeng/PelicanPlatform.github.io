@@ -1,5 +1,4 @@
 import {getPresentations} from "@/utils/presentations";
-import {ArticleCard, HeroCard} from "@/components/Article";
 import {Box, Container, Grid, Typography} from "@mui/material";
 import {PresentationCard} from "@/components/Presentation";
 
