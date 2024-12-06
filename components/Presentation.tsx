@@ -1,5 +1,7 @@
-import {Box, Container, Typography} from "@mui/material";
+import {Box, Button, Container, Typography} from "@mui/material";
 import Link from "next/link";
+import DownloadIcon from "@mui/icons-material/Download";
+import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import Balancer from "react-wrap-balancer";
 
 interface PresentationCardProps {
@@ -8,17 +10,14 @@ interface PresentationCardProps {
 }
 
 export interface PresentationProps {
+    id: number;
     title: string;
     description: string;
     authors: string;
     published_date: string;
+    download_url: string;
     path: string;
     thumb: string;
-    excerpt: string;
-    image: {
-        path: string;
-        alt: string;
-    };
 }
 
 
@@ -46,7 +45,6 @@ export const PresentationCard = ({ href, presentation }: PresentationCardProps) 
                             objectFit: "cover",
                         }}
                         src={presentation.thumb}
-                        alt={presentation.image.alt}
                     />
                 </Box>
                 <Box p={2} display="flex" flexDirection="column" flexGrow={1}>
@@ -87,10 +85,12 @@ export const PresentationCard = ({ href, presentation }: PresentationCardProps) 
 
 
 export const Presentation = ({
+                                id,
                                  title,
                                  description,
                                  authors,
                                  published_date,
+                                 download_url,
                                  path,
                                  thumb,
                              }: PresentationProps) => {
@@ -124,7 +124,7 @@ export const Presentation = ({
                     }}
                 >
                     <iframe
-                        src={`${path}/embed`}
+                        src={`https://widgets.figshare.com/articles/${id}/embed?show_title=1`}
                         title="Interactive Presentation Viewer"
                         style={{
                             position: "absolute",
@@ -138,23 +138,32 @@ export const Presentation = ({
                     ></iframe>
                 </Box>
 
-                {/*<Box pt={4}>*/}
-                {/*    <Typography variant="body1" sx={{ lineHeight: 1.6 }}>*/}
-                {/*        {description}*/}
-                {/*    </Typography>*/}
-                {/*</Box>*/}
-
-                <Box pt={4} display="flex" justifyContent="center">
-                    <Typography variant="h6" >
-                        <a
-                            href={path}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            style={{ color: "#0885ff" }}
-                        >
-                            View on Figshare
-                        </a>
-                    </Typography>
+                <Box
+                    pt={4}
+                    display="flex"
+                    justifyContent="center"
+                    gap={2}
+                >
+                    {/*<Button*/}
+                    {/*    variant="contained"*/}
+                    {/*    color="primary"*/}
+                    {/*    startIcon={<DownloadIcon />}*/}
+                    {/*    href={download_url}*/}
+                    {/*    target="_blank"*/}
+                    {/*    rel="noopener noreferrer"*/}
+                    {/*>*/}
+                    {/*    Download Presentation*/}
+                    {/*</Button>*/}
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        startIcon={<OpenInNewIcon />}
+                        href={path}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        View on Figshare
+                    </Button>
                 </Box>
             </Box>
         </Container>
