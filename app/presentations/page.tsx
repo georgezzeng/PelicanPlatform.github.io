@@ -10,7 +10,7 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
     // console.log(" presentations", presentations)
     return (
         <>
-            <HeroCard href={`/user-stories/${presentations[0].slug.join("/")}`} article={presentations[0]}/>
+            {/*<HeroCard href={`/user-stories/${presentations[0].slug.join("/")}`} article={presentations[0]}/>*/}
             <Box textAlign={"center"} py={5}>
                 <Typography variant={"h2"}>Presentations</Typography>
             </Box>
