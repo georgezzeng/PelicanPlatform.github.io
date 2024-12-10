@@ -1,10 +1,24 @@
+import { GithubMilestoneData } from "@/utils/github";
 import { Box, Container, Typography, Divider, Paper, Table, TableCell, TableRow, TableBody } from "@mui/material";
 
-export default function Page() {
-    const RELEASE_SCHEDULE = {
-        release_name: "7.11.0",
-        pre_release_date: "2024-10-29",
-        release_date: "2024-11-05",
+export default async function Page() {
+    const milestone = await getCurrentMilestone();
+
+    const preReleaseDate = new Date(new Date(milestone.due_on).getTime() - 1000 * 60 * 60 * 24 * 7); // 7 days before release
+    const releaseDate = new Date(milestone.due_on);
+
+    const releaseSchedule = {
+        release_name: milestone.title.replace("v", ""),
+        pre_release_date: preReleaseDate.toLocaleDateString("en-US", {
+            month: "numeric",
+            day: "2-digit",
+            year: "numeric",
+        }),
+        release_date: releaseDate.toLocaleDateString("en-US", {
+            month: "numeric",
+            day: "2-digit",
+            year: "numeric",
+        }),
     }
     
     return( 
@@ -22,7 +36,7 @@ export default function Page() {
                     increment the release number accordingly (e.g. `7.6.1`.)
                 </Typography>
                 <Paper sx={{padding: "1em", marginTop: "1em", backgroundColor: 'rgba(207, 228, 255)'}}>
-                    <Typography variant="h4">Next Release: {RELEASE_SCHEDULE.release_name}</Typography>
+                    <Typography variant="h4">Next Release: {releaseSchedule.release_name}</Typography>
                     <Divider sx={{marginBottom:"1em"}}/>
                     <Table sx={{display:"flex"}}>
                         <TableBody>
@@ -34,7 +48,7 @@ export default function Page() {
                                 </TableCell>
                                 <TableCell>
                                     <Typography variant="h6" align="left">
-                                        {RELEASE_SCHEDULE.pre_release_date}
+                                        {releaseSchedule.pre_release_date}
                                     </Typography>
                                 </TableCell>
                             </TableRow>
@@ -47,7 +61,7 @@ export default function Page() {
                                 </TableCell>
                                 <TableCell>
                                     <Typography variant="h6">
-                                        {RELEASE_SCHEDULE.release_date}
+                                        {releaseSchedule.release_date}
                                     </Typography>
                                 </TableCell>
                             </TableRow>
@@ -57,4 +71,34 @@ export default function Page() {
             </Container>
         </Box>
     );
+}
+
+async function getCurrentMilestone(): Promise<GithubMilestoneData> {
+    const apiUrl =
+        "https://api.github.com/repos/PelicanPlatform/pelican/milestones?direction=asc";
+    const response = await fetch(apiUrl);
+    if (!response.ok) throw new Error("Failed to fetch milestones");
+
+    const milestones: GithubMilestoneData[] = await response.json();
+
+    // simple type sanity checks, not exhaustive
+    if (!Array.isArray(milestones)) throw new Error("Invalid milestone data");
+    if (milestones.length === 0) throw new Error("No milestones found");
+    if (!("title" in milestones[0])) throw new Error("Invalid milestone state");
+    if (!("state" in milestones[0])) throw new Error("Invalid milestone state");
+
+    const currentMilestone = milestones.find(
+        (milestone) => milestone.state === "open"
+    );
+
+    if (!currentMilestone) {
+        // if there is no open milestone, default to the last closed one just to gracefully handle the case
+        console.warn(
+            "No open milestone found, defaulting to the last (closed) one"
+        );
+
+        return milestones.findLast((milestone) => milestone.state === "closed") ?? milestones[0];
+    } else {
+        return currentMilestone;
+    }
 }
