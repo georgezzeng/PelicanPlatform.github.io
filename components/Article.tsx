@@ -20,7 +20,7 @@ export const HeroCard = ({href, article} : CardProps) => {
 			<Box sx={{ display: { xs: 'none', md: 'block' } }}>
 				<Grid container>
 					<Grid item xs={6}>
-						<Image style={{objectFit: "cover", width: "100%", height: "100%", aspectRatio: 2}} src={article.image.path} alt={article.image.alt} />
+						<img style={{objectFit: "cover", width: "100%", height: "100%", aspectRatio: 2}} src={article.image.path} alt={article.image.alt} />
 					</Grid>
 					<Grid xs={6} display={"flex"}>
 						<Box width={"100%"} pl={2} p={3} display={"flex"} flexDirection={"column"} bgcolor={"#cfe4ff52"}>
