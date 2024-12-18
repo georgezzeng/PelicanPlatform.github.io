@@ -1,6 +1,7 @@
 import {Presentation} from "@/components/Presentation";
 import {getPresentation, getPresentations} from "@/utils/presentations";
 import { Box, Container, Typography } from "@mui/material";
+import {filterArticles, getArticles} from "@/utils/articles";
 
 interface PresentationProps {
     id: number;
@@ -63,6 +64,16 @@ interface PresentationProps {
         posted: string;
         firstOnline: string;
     };
+}
+
+export async function generateStaticParams() {
+    const presentations = await getPresentations()
+
+    return(
+        presentations.map((presentation) => {
+            slug: presentation.slug
+        })
+    )
 }
 
 async function getPresentationBySlug(slug: string[]): Promise<PresentationProps | null> {
