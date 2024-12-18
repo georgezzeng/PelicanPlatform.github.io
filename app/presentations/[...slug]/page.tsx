@@ -67,13 +67,16 @@ interface PresentationProps {
 }
 
 export async function generateStaticParams() {
-    const presentations = await getPresentations()
+    try {
+        const presentations = await getPresentations();
 
-    return(
-        presentations.map((presentation) => {
-            slug: presentation.slug
-        })
-    )
+        return presentations.map((presentation) => ({
+            slug: presentation.slug,
+        }));
+    } catch (error) {
+        console.error("Error:", error);
+        return [];
+    }
 }
 
 async function getPresentationBySlug(slug: string[]): Promise<PresentationProps | null> {
